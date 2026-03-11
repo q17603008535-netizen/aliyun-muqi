@@ -1,0 +1,52 @@
+backend:
+  name: github
+  repo: q17603008535-netizen/jade-website-v3
+  branch: main
+
+media_folder: static/images
+public_folder: /images
+
+local_backend: false
+
+i18n:
+  structure: single_file
+  locales: [zh-TW]
+  default_locale: zh-TW
+
+collections:
+  - name: products
+    label: 產品管理
+    folder: content/products
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: name, label: 產品名稱, widget: string }
+      - { name: weight, label: 重量, widget: string }
+      - { name: price, label: 價格, widget: string }
+      - { name: description, label: 描述, widget: text }
+      - { name: image, label: 產品圖片, widget: image }
+      - { name: featured, label: 顯示首頁, widget: boolean, default: false }
+
+  - name: contact
+    label: 聯繫方式
+    folder: content/contact
+    create: false
+    slug: "config"
+    fields:
+      - { name: wechat, label: LINE ID, widget: string }
+      - { name: line, label: WeChat ID, widget: string }
+      - { name: email, label: Email, widget: string }
+      - { name: phone, label: 電話, widget: string }
+      - { name: company_name, label: 公司名稱, widget: string }
+      - { name: address, label: 地址, widget: string }
+
+  - name: testimonials
+    label: 客戶評價
+    folder: content/testimonials
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: name, label: 客戶姓名, widget: string }
+      - { name: location, label: 地區, widget: string }
+      - { name: content, label: 評價內容, widget: text }
+      - { name: rating, label: 評分, widget: number, min: 1, max: 5, default: 5 }
