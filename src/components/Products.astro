@@ -1,0 +1,77 @@
+---
+interface Product {
+  id: string;
+  name: string;
+  weight: string;
+  price: string;
+  description: string;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const { 
+  title = "產品展示",
+  subtitle = "每週更新10款以上翡翠原石"
+} = Astro.props;
+
+const placeholderProducts: Product[] = [
+  { id: "1", name: "翡翠原石 #001", weight: "2.5kg", price: "請咨詢", description: "滿綠色澤，水頭足" },
+  { id: "2", name: "翡翠原石 #002", weight: "1.8kg", price: "請咨詢", description: "紫羅蘭色，種水好" },
+  { id: "3", name: "翡翠原石 #003", weight: "3.2kg", price: "請咨詢", description: "春帶彩，色彩鮮豔" },
+  { id: "4", name: "翡翠原石 #004", weight: "2.1kg", price: "請咨詢", description: "玻璃種，透明度高" },
+  { id: "5", name: "翡翠原石 #005", weight: "1.5kg", price: "請咨詢", description: "陽綠色，品質上乘" },
+  { id: "6", name: "翡翠原石 #006", weight: "2.8kg", price: "請咨詢", description: "藍綠色，適合雕刻" },
+  { id: "7", name: "翡翠原石 #007", weight: "2.0kg", price: "請咨詢", description: "帝王綠，極品收藏" },
+  { id: "8", name: "翡翠原石 #008", weight: "1.9kg", price: "請咨詢", description: "白底青，質地細膩" },
+];
+---
+
+<section id="products" class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">{title}</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">{subtitle}</p>
+      <div class="w-24 h-1 bg-primary mx-auto mt-4"></div>
+    </div>
+    
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {placeholderProducts.map((product) => (
+        <div class="group bg-white border border-gray-100 rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="aspect-square bg-gradient-to-br from-stone-100 to-stone-200 relative overflow-hidden">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-24 h-24 rounded-full bg-stone-300 flex items-center justify-center">
+                <svg class="w-12 h-12 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300"></div>
+          </div>
+          
+          <div class="p-4">
+            <h3 class="font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
+              {product.name}
+            </h3>
+            <p class="text-sm text-gray-500 mb-2">{product.description}</p>
+            <div class="flex items-center justify-between text-sm">
+              <span class="text-gray-600">重量：{product.weight}</span>
+              <span class="text-primary font-semibold">{product.price}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <div class="text-center mt-12">
+      <a href="#contact" class="inline-flex items-center justify-center px-6 py-3 border border-primary text-primary hover:bg-primary hover:text-white font-medium rounded-lg transition-all duration-300">
+        查看更多產品
+        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

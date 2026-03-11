@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #1a5f4a;
+  --color-primary-dark: #134436;
+  --color-secondary: #d4a574;
+  --color-accent: #8b4513;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+}

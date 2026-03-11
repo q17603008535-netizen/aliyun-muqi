@@ -1,0 +1,87 @@
+---
+interface Props {
+  logoText?: string;
+}
+
+const { logoText = "翡翠代購" } = Astro.props;
+
+const navLinks = [
+  { href: "#about", label: "關於我們" },
+  { href: "#trust", label: "信任保證" },
+  { href: "#products", label: "產品展示" },
+  { href: "#why-us", label: "為什麼選擇我們" },
+  { href: "#contact", label: "聯繫我們" },
+];
+---
+
+<header id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm transition-all duration-300">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="#" class="flex items-center gap-2">
+        <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+          </svg>
+        </div>
+        <span class="text-lg font-semibold text-gray-900">{logoText}</span>
+      </a>
+      
+      <nav class="hidden md:flex items-center gap-8">
+        {navLinks.map((link) => (
+          <a href={link.href} class="text-gray-600 hover:text-primary transition-colors text-sm font-medium">
+            {link.label}
+          </a>
+        ))}
+      </nav>
+      
+      <div class="flex items-center gap-4">
+        <a href="#contact" class="hidden sm:inline-flex items-center px-4 py-2 bg-primary hover:bg-primary-dark text-white text-sm font-medium rounded-lg transition-colors">
+          立即咨詢
+        </a>
+        
+        <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-600 hover:text-gray-900" aria-label="菜單">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+    <div class="px-4 py-2 space-y-1">
+      {navLinks.map((link) => (
+        <a href={link.href} class="block px-3 py-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded-lg transition-colors">
+          {link.label}
+        </a>
+      ))}
+      <a href="#contact" class="block px-3 py-2 text-primary font-medium">
+        立即咨詢
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar?.classList.add('shadow-md');
+    } else {
+      navbar?.classList.remove('shadow-md');
+    }
+  });
+  
+  mobileMenuBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+  
+  document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+    });
+  });
+</script>

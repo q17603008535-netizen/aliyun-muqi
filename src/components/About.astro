@@ -1,0 +1,87 @@
+---
+interface Props {
+  title?: string;
+  experience?: string;
+  background?: string;
+  philosophy?: string;
+}
+
+const { 
+  title = "關於我們",
+  experience = "10年+",
+  background = "14年雕刻學徒出身",
+  philosophy = "不割韭菜，真實做生意"
+} = Astro.props;
+---
+
+<section id="about" class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">{title}</h2>
+      <div class="w-24 h-1 bg-primary mx-auto"></div>
+    </div>
+    
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="relative">
+        <div class="aspect-square bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl flex items-center justify-center">
+          <div class="text-center p-8">
+            <div class="text-6xl font-bold text-primary mb-2">{experience}</div>
+            <div class="text-gray-600">行業經驗</div>
+          </div>
+        </div>
+        <div class="absolute -bottom-6 -right-6 w-48 h-48 bg-secondary/20 rounded-full -z-10"></div>
+        <div class="absolute -top-6 -left-6 w-32 h-32 bg-primary/10 rounded-full -z-10"></div>
+      </div>
+      
+      <div>
+        <h3 class="text-2xl font-semibold text-gray-900 mb-6">
+          專業翡翠原石買手
+        </h3>
+        
+        <div class="space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-900 mb-1">{background}</h4>
+              <p class="text-gray-600 text-sm">2014年開始做雕刻學徒，潛心5年，2019年開始轉做直播，後來開始自己買石頭</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-900 mb-1">忠實客戶</h4>
+              <p class="text-gray-600 text-sm">跟隨3年以上的客戶 <span class="text-primary font-bold">5人以上</span>，口碑良好</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-900 mb-1">經營理念</h4>
+              <p class="text-gray-600 text-sm">{philosophy}</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mt-8 p-4 bg-stone-50 rounded-lg border-l-4 border-primary">
+          <p class="text-gray-700 italic">
+            "有自己獨特的買原石邏輯，保證客戶買到的原石都能做貨"
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

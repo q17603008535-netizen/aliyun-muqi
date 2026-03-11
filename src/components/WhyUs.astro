@@ -1,0 +1,73 @@
+---
+interface Props {
+  title?: string;
+}
+
+const { title = "為什麼選擇我們" } = Astro.props;
+---
+
+<section id="why-us" class="py-20 bg-stone-900 text-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">{title}</h2>
+      <p class="text-stone-400 max-w-2xl mx-auto">
+        四大核心優勢，讓您放心選購
+      </p>
+      <div class="w-24 h-1 bg-secondary mx-auto mt-4"></div>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="text-center">
+        <div class="inline-flex items-center justify-center w-20 h-20 bg-secondary/20 rounded-full mb-6">
+          <svg class="w-10 h-10 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">價格優勢</h3>
+        <p class="text-stone-400 text-sm leading-relaxed">
+          收貨量大，品質高、價格低<br/>
+          本地匯率比國際低50%
+        </p>
+      </div>
+      
+      <div class="text-center">
+        <div class="inline-flex items-center justify-center w-20 h-20 bg-secondary/20 rounded-full mb-6">
+          <svg class="w-10 h-10 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">品質保證</h3>
+        <p class="text-stone-400 text-sm leading-relaxed">
+          一物一證，天然A貨<br/>
+          瑞麗公司正規經營
+        </p>
+      </div>
+      
+      <div class="text-center">
+        <div class="inline-flex items-center justify-center w-20 h-20 bg-secondary/20 rounded-full mb-6">
+          <svg class="w-10 h-10 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">專業可靠</h3>
+        <p class="text-stone-400 text-sm leading-relaxed">
+          10年行業經驗<br/>
+          14年雕刻學徒眼光
+        </p>
+      </div>
+      
+      <div class="text-center">
+        <div class="inline-flex items-center justify-center w-20 h-20 bg-secondary/20 rounded-full mb-6">
+          <svg class="w-10 h-10 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">客戶口碑</h3>
+        <p class="text-stone-400 text-sm leading-relaxed">
+          5位以上客戶跟隨3年以上<br/>
+          不割韭菜，真實做生意
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
