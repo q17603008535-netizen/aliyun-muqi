@@ -1,6 +1,5 @@
 ---
 interface Testimonial {
-  id: string;
   name: string;
   location: string;
   content: string;
@@ -8,33 +7,19 @@ interface Testimonial {
 }
 
 interface Props {
+  testimonials?: Testimonial[];
   title?: string;
 }
 
-const { title = "客戶見證" } = Astro.props;
+const { 
+  testimonials = [],
+  title = "客戶見證" 
+} = Astro.props;
 
-const testimonials: Testimonial[] = [
-  {
-    id: "1",
-    name: "王小姐",
-    location: "台灣",
-    content: "經過朋友介紹認識了老板，買了3塊石頭都漲了！老板眼光很準，會推薦給朋友。",
-    rating: 5
-  },
-  {
-    id: "2",
-    name: "陳先生",
-    location: "香港",
-    content: "本地匯率確實比外面便宜很多，而且老板很誠實，會如實告訴你石頭的風險。",
-    rating: 5
-  },
-  {
-    id: "3",
-    name: "林小姐",
-    location: "新加坡",
-    content: "已經跟老板合作了3年，每年都會買幾塊做收藏。服務態度好，東西品質也有保障。",
-    rating: 5
-  }
+const displayTestimonials = testimonials.length > 0 ? testimonials : [
+  { name: "王小姐", location: "台灣", content: "經過朋友介紹認識了老板，買了3塊石頭都漲了！老板眼光很準，會推薦給朋友。", rating: 5 },
+  { name: "陳先生", location: "香港", content: "本地匯率確實比外面便宜很多，而且老板很誠實，會如實告訴你石頭的風險。", rating: 5 },
+  { name: "林小姐", location: "新加坡", content: "已經跟老板合作了3年，每年都會買幾塊做收藏。服務態度好，東西品質也有保障。", rating: 5 },
 ];
 ---
 
@@ -49,7 +34,7 @@ const testimonials: Testimonial[] = [
     </div>
     
     <div class="grid md:grid-cols-3 gap-8">
-      {testimonials.map((testimonial) => (
+      {displayTestimonials.map((testimonial) => (
         <div class="bg-stone-50 p-6 rounded-xl">
           <div class="flex items-center gap-1 mb-4">
             {[...Array(5)].map((_, i) => (
