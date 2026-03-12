@@ -27,6 +27,17 @@ collections:
       - { name: image, label: 產品圖片, widget: image }
       - { name: featured, label: 顯示首頁, widget: boolean, default: false }
 
+  - name: hero
+    label: 首頁Banner
+    folder: src/content/hero
+    create: false
+    slug: "config"
+    fields:
+      - { name: background_image, label: 背景圖片, widget: image }
+      - { name: title, label: 主標題, widget: string, default: "專業翡翠原石買手｜曼德勒直採｜10年經驗" }
+      - { name: subtitle, label: 副標題, widget: string, default: "本地匯率優勢｜一物一證｜只賺取20%代購費" }
+      - { name: cta_text, label: 按鈕文字, widget: string, default: "立即咨詢" }
+
   - name: contact
     label: 聯繫方式
     folder: src/content/contact

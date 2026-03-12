@@ -12,6 +12,16 @@ const products = defineCollection({
   }),
 });
 
+const hero = defineCollection({
+  type: 'content',
+  schema: z.object({
+    background_image: z.string().optional(),
+    title: z.string().default('專業翡翠原石買手｜曼德勒直採｜10年經驗'),
+    subtitle: z.string().default('本地匯率優勢｜一物一證｜只賺取20%代購費'),
+    cta_text: z.string().default('立即咨詢'),
+  }),
+});
+
 const contact = defineCollection({
   type: 'content',
   schema: z.object({
@@ -36,6 +46,7 @@ const testimonials = defineCollection({
 
 export const collections = {
   products,
+  hero,
   contact,
   testimonials,
 };

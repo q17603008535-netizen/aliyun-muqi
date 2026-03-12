@@ -23,13 +23,16 @@ const products = productsData.map(p => p.data);
 
 const testimonialsData = await getCollection('testimonials');
 const testimonials = testimonialsData.map(t => t.data);
+
+const heroData = await getCollection('hero');
+const hero = heroData[0]?.data || {};
 ---
 
 <Layout title="翡翠原石代購｜曼德勒專業買手｜10年經驗">
   <Navbar />
   
   <main>
-    <Hero contacts={contacts} />
+    <Hero hero={hero} contacts={contacts} />
     <About />
     <Trust />
     <Products products={products} />
