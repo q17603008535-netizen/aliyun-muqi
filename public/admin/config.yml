@@ -16,7 +16,7 @@ i18n:
 collections:
   - name: products
     label: 產品管理
-    folder: content/products
+    folder: src/content/products
     create: true
     slug: "{{slug}}"
     fields:
@@ -29,7 +29,7 @@ collections:
 
   - name: contact
     label: 聯繫方式
-    folder: content/contact
+    folder: src/content/contact
     create: false
     slug: "config"
     fields:
@@ -42,7 +42,7 @@ collections:
 
   - name: testimonials
     label: 客戶評價
-    folder: content/testimonials
+    folder: src/content/testimonials
     create: true
     slug: "{{slug}}"
     fields:
