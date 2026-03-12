@@ -33,10 +33,22 @@ collections:
     create: false
     slug: "config"
     fields:
-      - { name: background_image, label: 背景圖片, widget: image }
+      - { name: background_image, label: 電腦端背景圖片, widget: image, hint: "建議比例 16:9" }
+      - { name: mobile_background_image, label: 手機端背景圖片, widget: image, hint: "建議比例 3:4" }
       - { name: title, label: 主標題, widget: string, default: "專業翡翠原石買手｜曼德勒直採｜10年經驗" }
       - { name: subtitle, label: 副標題, widget: string, default: "本地匯率優勢｜一物一證｜只賺取20%代購費" }
       - { name: cta_text, label: 按鈕文字, widget: string, default: "立即咨詢" }
+
+  - name: about
+    label: 關於我們
+    folder: src/content/about
+    create: false
+    slug: "config"
+    fields:
+      - { name: experience_image, label: 經驗圖片, widget: image, hint: "建議比例 1:1 方形" }
+      - { name: experience_text, label: 經驗文字, widget: string, default: "10年+行業經驗" }
+      - { name: title, label: 標題, widget: string, default: "專業翡翠原石買手" }
+      - { name: description, label: 介紹文字, widget: text, default: "我們專注於從緬甸曼德勒礦區直接採購優質翡翠原石，擁有10年以上行業經驗，提供專業的翡翠選購建議和代購服務。" }
 
   - name: contact
     label: 聯繫方式

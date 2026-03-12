@@ -1,6 +1,7 @@
 ---
 interface HeroData {
   background_image?: string;
+  mobile_background_image?: string;
   title?: string;
   subtitle?: string;
   cta_text?: string;
@@ -23,10 +24,15 @@ interface Props {
 const { hero = {}, contacts = [] } = Astro.props;
 ---
 
-<section id="hero" class="relative min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 overflow-hidden">
-  {hero.background_image ? (
+<section id="hero" class="relative min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 overflow-hidden pt-16 md:pt-0">
+  {hero.background_image || hero.mobile_background_image ? (
     <div class="absolute inset-0">
-      <img src={hero.background_image} alt="Background" class="w-full h-full object-cover opacity-30" />
+      {hero.mobile_background_image && (
+        <img src={hero.mobile_background_image} alt="手機背景" class="md:hidden w-full h-full object-cover opacity-30" />
+      )}
+      {hero.background_image && (
+        <img src={hero.background_image} alt="電腦背景" class="hidden md:block w-full h-full object-cover opacity-30" />
+      )}
     </div>
   ) : (
     <div class="absolute inset-0 opacity-20">

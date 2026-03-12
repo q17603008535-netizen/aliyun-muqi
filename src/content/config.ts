@@ -16,9 +16,20 @@ const hero = defineCollection({
   type: 'content',
   schema: z.object({
     background_image: z.string().optional(),
+    mobile_background_image: z.string().optional(),
     title: z.string().default('專業翡翠原石買手｜曼德勒直採｜10年經驗'),
     subtitle: z.string().default('本地匯率優勢｜一物一證｜只賺取20%代購費'),
     cta_text: z.string().default('立即咨詢'),
+  }),
+});
+
+const about = defineCollection({
+  type: 'content',
+  schema: z.object({
+    experience_image: z.string().optional(),
+    experience_text: z.string().default('10年+行業經驗'),
+    title: z.string().default('專業翡翠原石買手'),
+    description: z.string().default('我們專注於從緬甸曼德勒礦區直接採購優質翡翠原石，擁有10年以上行業經驗，提供專業的翡翠選購建議和代購服務。'),
   }),
 });
 
@@ -47,6 +58,7 @@ const testimonials = defineCollection({
 export const collections = {
   products,
   hero,
+  about,
   contact,
   testimonials,
 };
