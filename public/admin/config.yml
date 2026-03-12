@@ -30,15 +30,15 @@ collections:
   - name: contact
     label: 聯繫方式
     folder: src/content/contact
-    create: false
-    slug: "config"
+    create: true
+    slug: "{{slug}}"
     fields:
-      - { name: wechat, label: LINE ID, widget: string }
-      - { name: line, label: WeChat ID, widget: string }
-      - { name: email, label: Email, widget: string }
-      - { name: phone, label: 電話, widget: string }
-      - { name: company_name, label: 公司名稱, widget: string }
-      - { name: address, label: 地址, widget: string }
+      - { name: type, label: 類型, widget: select, options: [微信, LINE, Email, 電話, 地址], default: 微信 }
+      - { name: value, label: 帳號/地址, widget: string }
+      - { name: label, label: 顯示名稱, widget: string, default: 請添加 }
+      - { name: icon, label: 圖標, widget: string, hint: "填寫圖標名稱，如: wechat, line, email, phone, address" }
+      - { name: visible, label: 顯示在前端, widget: boolean, default: true }
+      - { name: order, label: 排序順序, widget: number, default: 1 }
 
   - name: testimonials
     label: 客戶評價

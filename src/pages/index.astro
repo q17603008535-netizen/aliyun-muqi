@@ -13,7 +13,10 @@ import Footer from '../components/Footer.astro';
 import { getCollection } from 'astro:content';
 
 const contactData = await getCollection('contact');
-const contact = contactData[0]?.data || {};
+const contacts = contactData
+  .filter(c => c.data.visible)
+  .sort((a, b) => (a.data.order || 1) - (b.data.order || 1))
+  .map(c => c.data);
 
 const productsData = await getCollection('products');
 const products = productsData.map(p => p.data);
@@ -26,13 +29,13 @@ const testimonials = testimonialsData.map(t => t.data);
   <Navbar />
   
   <main>
-    <Hero contact={contact} />
+    <Hero contacts={contacts} />
     <About />
     <Trust />
     <Products products={products} />
     <WhyUs />
     <Testimonials testimonials={testimonials} />
-    <Contact contact={contact} />
+    <Contact contacts={contacts} />
   </main>
   
   <Footer />

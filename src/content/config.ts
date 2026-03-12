@@ -15,12 +15,12 @@ const products = defineCollection({
 const contact = defineCollection({
   type: 'content',
   schema: z.object({
-    wechat: z.string().default(''),
-    line: z.string().default(''),
-    email: z.string().default(''),
-    phone: z.string().default(''),
-    company_name: z.string().default(''),
-    address: z.string().default(''),
+    type: z.enum(['微信', 'LINE', 'Email', '電話', '地址']).default('微信'),
+    value: z.string().default(''),
+    label: z.string().default('請添加'),
+    icon: z.string().default(''),
+    visible: z.boolean().default(true),
+    order: z.number().default(1),
   }),
 });
 
@@ -34,30 +34,8 @@ const testimonials = defineCollection({
   }),
 });
 
-const hero = defineCollection({
-  type: 'content',
-  schema: z.object({
-    slogan: z.string().default(''),
-    subtitle: z.string().default(''),
-    cta_text: z.string().default(''),
-    cta_link: z.string().default(''),
-  }),
-});
-
-const about = defineCollection({
-  type: 'content',
-  schema: z.object({
-    title: z.string().default(''),
-    experience: z.string().default(''),
-    background: z.string().default(''),
-    philosophy: z.string().default(''),
-  }),
-});
-
 export const collections = {
   products,
   contact,
   testimonials,
-  hero,
-  about,
 };
