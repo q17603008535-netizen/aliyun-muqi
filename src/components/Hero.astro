@@ -54,7 +54,7 @@ const titleLines = hero.title_lines?.length ? hero.title_lines : defaultTitleLin
 const subtitleLines = hero.subtitle_lines?.length ? hero.subtitle_lines : defaultSubtitleLines;
 ---
 
-<section id="hero" class="relative min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 overflow-hidden pt-16 pb-12 md:pt-0 md:pb-0">
+<section id="hero" class="relative min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 overflow-hidden pt-16 pb-20 md:pt-0 md:pb-0">
   {hero.background_image || hero.mobile_background_image ? (
     <div class="absolute inset-0">
       {hero.mobile_background_image && (
@@ -103,7 +103,7 @@ const subtitleLines = hero.subtitle_lines?.length ? hero.subtitle_lines : defaul
       </span>
     </p>
     
-    <div class="flex gap-4 justify-center items-center flex-wrap mb-8">
+    <div class="flex gap-4 justify-center items-center flex-wrap">
       <button id="contact-modal-btn" class="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-primary text-white font-medium rounded-lg btn-hover shadow-lg cursor-pointer">
         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
