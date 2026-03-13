@@ -110,6 +110,8 @@ const displayProducts = products.length > 0 ? products : [
                   loading="lazy"
                   decoding="async"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  formats={['avif', 'webp', 'original']}
+                  quality={75}
                   class="w-full h-full object-cover"
                 />
               ) : (

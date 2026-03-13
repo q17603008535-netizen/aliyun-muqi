@@ -33,6 +33,9 @@ const navLinks = [
             height={40}
             loading="eager"
             decoding="async"
+            fetchpriority="high"
+            formats={['avif', 'webp', 'original']}
+            quality={90}
             class="w-10 h-10 object-contain rounded-lg" 
           />
         ) : (

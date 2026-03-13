@@ -30,7 +30,33 @@ const {
     <meta name="generator" content={Astro.generator} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" 
+      rel="stylesheet" 
+    />
+    <style>
+      /* 字体加载优化 - 避免 FOIT */
+      @font-face {
+        font-family: 'Noto Sans TC Fallback';
+        src: local('Arial');
+        ascent-override: 100%;
+        descent-override: 30%;
+        line-gap-override: 0%;
+        size-adjust: 107%;
+      }
+      html {
+        font-family: 'Noto Sans TC Fallback', sans-serif;
+      }
+      html.loaded {
+        font-family: 'Noto Sans TC', sans-serif;
+      }
+    </style>
+    <script>
+      // 字体加载完成后切换
+      document.fonts.ready.then(() => {
+        document.documentElement.classList.add('loaded');
+      });
+    </script>
     
     <!-- SEO Component -->
     <SEO 

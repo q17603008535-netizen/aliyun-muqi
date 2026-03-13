@@ -70,7 +70,8 @@ const settings = settingsData[0]?.data || {};
   }
 </style>
 
-<script>
+<script hoist>
+  // 优化：延迟加载非关键交互
   function initFadeInAnimations() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -88,6 +89,12 @@ const settings = settingsData[0]?.data || {};
     });
   }
 
-  document.addEventListener('DOMContentLoaded', initFadeInAnimations);
-  document.addEventListener('astro:page-load', initFadeInAnimations);
+  // 使用 requestIdleCallback 或 setTimeout 延迟初始化
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(() => {
+      initFadeInAnimations();
+    });
+  } else {
+    setTimeout(initFadeInAnimations, 100);
+  }
 </script>
