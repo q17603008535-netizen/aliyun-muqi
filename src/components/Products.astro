@@ -8,14 +8,22 @@ interface Product {
   featured?: boolean;
 }
 
+interface ContactItem {
+  type: string;
+  value: string;
+  label: string;
+}
+
 interface Props {
   products?: Product[];
+  contacts?: ContactItem[];
   title?: string;
   subtitle?: string;
 }
 
 const { 
   products = [],
+  contacts = [],
   title = "產品展示",
   subtitle = "每週更新10款以上翡翠原石"
 } = Astro.props;
@@ -42,7 +50,7 @@ const displayProducts = products.length > 0 ? products : [
     
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {displayProducts.map((product) => (
-        <div class="group bg-white border border-gray-100 rounded-xl overflow-hidden card-hover">
+        <div class="group bg-white border border-gray-100 rounded-xl overflow-hidden card-hover relative">
           <div class="aspect-square bg-gradient-to-br from-stone-100 to-stone-200 relative overflow-hidden">
             {product.image ? (
               <img 
@@ -60,6 +68,15 @@ const displayProducts = products.length > 0 ? products : [
               </div>
             )}
             <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300"></div>
+            
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
+              <button 
+                class="product-contact-btn transform scale-90 group-hover:scale-100 transition-transform duration-300 px-6 py-3 bg-white text-primary font-medium rounded-lg btn-hover shadow-lg"
+                data-product={product.name}
+              >
+                立即咨詢
+              </button>
+            </div>
           </div>
           
           <div class="p-4">
@@ -86,3 +103,108 @@ const displayProducts = products.length > 0 ? products : [
     </div>
   </div>
 </section>
+
+{contacts.length > 0 && (
+  <div id="product-contact-modal" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm product-modal-overlay"></div>
+    <div class="flex items-center justify-center min-h-screen p-4">
+      <div class="product-modal-content relative bg-white rounded-2xl shadow-2xl max-w-md w-full p-6">
+        <button class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 product-modal-close">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+        
+        <h3 class="text-xl font-bold text-gray-900 mb-2 text-center">咨詢產品</h3>
+        <p id="selected-product" class="text-gray-600 text-center mb-6"></p>
+        
+        <div class="space-y-3">
+          {contacts.map((contact) => (
+            <button 
+              class="contact-copy-btn w-full flex items-center gap-3 p-4 bg-gray-50 hover:bg-gray-100 rounded-xl transition-colors text-left"
+              data-value={contact.value}
+            >
+              <div class="flex-shrink-0 w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                {contact.type === '微信' && (
+                  <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 01.213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 00.167-.054l1.903-1.114a.864.864 0 01.717-.098 10.16 10.16 0 002.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178A1.17 1.17 0 014.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178 1.17 1.17 0 01-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 01.598.082l1.584.926a.272.272 0 00.14.045c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 01-.023-.156.49.49 0 01.201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135.007-.264.029-.406.03zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 01-.969.983.976.976 0 01-.969-.983c0-.542.434-.982.97-.982z"/>
+                  </svg>
+                )}
+                {contact.type === 'LINE' && (
+                  <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12.186 2.553c-1.562 0-2.882.477-4.012 1.164-1.193.724-1.802 1.75-1.802 2.927 0 1.28.582 2.4 1.358 3.274.906 1.016 1.99 1.794 3.052 2.38a.494.494 0 01.248.563l-.39 1.555c-.04.14-.123.206-.227.206a.287.287 0 01-.195-.083l-1.252-1.018a.862.862 0 00-.698-.332c-.41 0-.757.182-1.025.537-.248.33-.382.75-.382 1.236 0 .94.372 1.722 1.055 2.233l1.428 1.164c.566.45 1.175.683 1.818.683.61 0 1.175-.143 1.685-.415.503-.272.93-.647 1.288-1.133a.557.557 0 00.14-.166l.092-.382c.102-.422.05-.795-.155-1.116-.195-.305-.503-.46-.896-.46z"/>
+                  </svg>
+                )}
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="font-medium text-gray-900 truncate">{contact.type}</p>
+                <p class="text-sm text-gray-500 truncate">{contact.value}</p>
+              </div>
+              <div class="flex-shrink-0 text-green-600">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                </svg>
+              </div>
+            </button>
+          ))}
+        </div>
+        
+        <p class="mt-4 text-center text-green-600 text-sm product-toast hidden">已复制到剪贴簿！</p>
+      </div>
+    </div>
+  </div>
+)}
+
+<script>
+  const productContactBtns = document.querySelectorAll('.product-contact-btn');
+  const productModal = document.getElementById('product-contact-modal');
+  const productModalClose = document.querySelector('.product-modal-close');
+  const productModalOverlay = document.querySelector('.product-modal-overlay');
+  const selectedProduct = document.getElementById('selected-product');
+  const productToast = document.querySelector('.product-toast');
+  
+  productContactBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const productName = btn.getAttribute('data-product');
+      if (selectedProduct) {
+        selectedProduct.textContent = `產品：${productName}`;
+      }
+      productModal?.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  
+  productModalClose?.addEventListener('click', () => {
+    productModal?.classList.add('hidden');
+    document.body.style.overflow = '';
+  });
+  
+  productModalOverlay?.addEventListener('click', () => {
+    productModal?.classList.add('hidden');
+    document.body.style.overflow = '';
+  });
+  
+  document.querySelectorAll('.contact-copy-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const value = btn.getAttribute('data-value');
+      if (value) {
+        try {
+          await navigator.clipboard.writeText(value);
+          productToast?.classList.remove('hidden');
+          setTimeout(() => {
+            productToast?.classList.add('hidden');
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy:', err);
+        }
+      }
+    });
+  });
+  
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      productModal?.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+  });
+</script>
