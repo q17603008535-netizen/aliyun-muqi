@@ -1,4 +1,4 @@
 ---
-logo: ""
-brand_name: "翡翠代購"
+logo: /images/单独LOGO.png
+brand_name: 翡翠代購
 ---
