@@ -1,6 +1,6 @@
 ---
-background_image: /images/人物 1.png
-mobile_background_image: /images/人物 2.png
+background_image: /images/人物1.png
+mobile_background_image: /images/人物2.png
 title_lines:
   - text: 專業翡翠原石買手
   - text: 曼德勒直採｜10 年經驗
