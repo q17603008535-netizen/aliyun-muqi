@@ -1,0 +1,134 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const settings = await getCollection('settings');
+const setting = settings[0]?.data || {};
+
+interface ContactItem {
+  type: string;
+  value: string;
+  label: string;
+}
+
+const contacts: ContactItem[] = [
+  { type: 'line', value: 'luotianfeicui', label: 'Line ID' },
+  { type: 'wechat', value: 'luotianfeicui', label: '微信' }
+];
+---
+
+<Layout title="500 - 服务器错误 | 洛天翡翠" description="服务器遇到错误，请稍后重试或联系我们的客服获取帮助。">
+  <Navbar settings={setting} />
+  <main class="min-h-screen flex items-center justify-center bg-gradient-to-b from-white to-stone-50 py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="mb-8">
+        <div class="text-9xl font-bold text-red-100 mb-4">500</div>
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">服务器错误</h1>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
+          抱歉，服务器遇到了一些问题。我们的技术团队已经收到通知，正在尽快修复。请稍后重试，或联系客服获取帮助。
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 mb-12">
+        <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
+          <div class="w-12 h-12 bg-red-50 rounded-full flex items-center justify-center mb-4 mx-auto">
+            <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">稍后重试</h3>
+          <p class="text-gray-600 mb-4">服务器可能在维护中，请等待几分钟后刷新页面</p>
+          <button 
+            onclick="window.location.reload()"
+            class="inline-flex items-center justify-center px-6 py-3 bg-red-500 text-white font-medium rounded-lg btn-hover shadow-lg transition-all duration-300 w-full"
+          >
+            刷新页面
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
+          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">紧急联系</h3>
+          <p class="text-gray-600 mb-4">如需紧急帮助，请通过以下方式联系我们的客服团队</p>
+          <a 
+            href="/#contact" 
+            class="inline-flex items-center justify-center px-6 py-3 border-2 border-primary text-primary font-medium rounded-lg hover:bg-primary hover:text-white transition-all duration-300 w-full"
+          >
+            联系客服
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 max-w-3xl mx-auto">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">您可以尝试以下操作：</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="p-4 bg-stone-50 rounded-lg border border-gray-200">
+            <div class="text-red-500 mb-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h4 class="font-medium text-gray-900">清除缓存</h4>
+            <p class="text-sm text-gray-600 mt-1">清除浏览器缓存后重试</p>
+          </div>
+          
+          <div class="p-4 bg-stone-50 rounded-lg border border-gray-200">
+            <div class="text-yellow-500 mb-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+            </div>
+            <h4 class="font-medium text-gray-900">检查网络</h4>
+            <p class="text-sm text-gray-600 mt-1">确保您的网络连接正常</p>
+          </div>
+          
+          <div class="p-4 bg-stone-50 rounded-lg border border-gray-200">
+            <div class="text-blue-500 mb-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <h4 class="font-medium text-gray-900">稍后访问</h4>
+            <p class="text-sm text-gray-600 mt-1">等待服务器恢复正常</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 text-sm text-gray-500">
+        <p>如果问题持续存在，请记录错误时间并联系技术支持：</p>
+        <p class="mt-2">错误代码：<code class="bg-gray-100 px-2 py-1 rounded text-gray-700">500_INTERNAL_SERVER_ERROR</code></p>
+        <p class="mt-2">时间：<span id="error-time"></span></p>
+      </div>
+    </div>
+  </main>
+  <Footer settings={setting} contacts={contacts} />
+</Layout>
+
+<script>
+  document.getElementById('error-time').textContent = new Date().toLocaleString('zh-TW');
+</script>
+
+<style>
+  .btn-hover {
+    transition: all 0.3s ease;
+  }
+  .btn-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(239, 68, 68, 0.3);
+  }
+  .btn-hover:active {
+    transform: translateY(0);
+  }
+</style>

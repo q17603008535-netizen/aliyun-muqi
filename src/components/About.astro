@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 interface AboutData {
   experience_image?: string;
   experience_text?: string;
@@ -60,7 +62,16 @@ const features = [
       <div class="relative">
         {about.experience_image ? (
           <div class="aspect-square bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl flex flex-col items-center justify-center overflow-hidden">
-            <img src={about.experience_image} alt="經驗" class="w-full h-full object-cover" />
+            <Image 
+              src={about.experience_image} 
+              alt="經驗" 
+              width={600}
+              height={600}
+              loading="lazy"
+              decoding="async"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              class="w-full h-full object-cover" 
+            />
             {about.experience_text && (
               <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm px-6 py-3 rounded-lg shadow-lg text-center w-auto min-w-[160px]">
                 <div class="text-2xl font-bold text-primary">{about.experience_text}</div>

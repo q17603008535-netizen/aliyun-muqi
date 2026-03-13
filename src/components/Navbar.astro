@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 interface SettingsData {
   logo?: string;
   brand_name?: string;
@@ -24,7 +26,15 @@ const navLinks = [
     <div class="flex items-center justify-between h-16">
       <a href="#" class="flex items-center gap-2">
         {settings.logo ? (
-          <img src={settings.logo} alt="Logo" class="w-10 h-10 object-contain rounded-lg" />
+          <Image 
+            src={settings.logo} 
+            alt="Logo" 
+            width={40}
+            height={40}
+            loading="eager"
+            decoding="async"
+            class="w-10 h-10 object-contain rounded-lg" 
+          />
         ) : (
           <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">

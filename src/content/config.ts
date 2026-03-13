@@ -5,6 +5,9 @@ const settings = defineCollection({
   schema: z.object({
     logo: z.string().optional(),
     brand_name: z.string().default('翡翠代購'),
+    instagram: z.string().url().optional(),
+    youtube: z.string().url().optional(),
+    facebook: z.string().url().optional(),
   }),
 });
 

@@ -22,6 +22,9 @@ collections:
     fields:
       - { name: logo, label: Logo圖標, widget: image, hint: "建議尺寸 100x100 方形PNG" }
       - { name: brand_name, label: 品牌名稱, widget: string, default: "翡翠代購" }
+      - { name: instagram, label: TikTok, widget: string, hint: "輸入 TikTok 主頁連結" }
+      - { name: youtube, label: YouTube, widget: string, hint: "輸入 YouTube 頻道連結" }
+      - { name: facebook, label: Facebook, widget: string, hint: "輸入 Facebook 專頁連結" }
 
   - name: products
     label: 產品管理

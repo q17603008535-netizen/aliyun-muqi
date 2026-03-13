@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 interface HeroData {
   background_image?: string;
   mobile_background_image?: string;
@@ -58,10 +60,28 @@ const subtitleLines = hero.subtitle_lines?.length ? hero.subtitle_lines : defaul
   {hero.background_image || hero.mobile_background_image ? (
     <div class="absolute inset-0">
       {hero.mobile_background_image && (
-        <img src={hero.mobile_background_image} alt="手機背景" class="md:hidden w-full h-full object-cover opacity-30" />
+        <Image 
+          src={hero.mobile_background_image} 
+          alt="手機背景" 
+          width={800}
+          height={1200}
+          loading="eager"
+          decoding="async"
+          sizes="(max-width: 768px) 100vw, 0px"
+          class="md:hidden w-full h-full object-cover opacity-30" 
+        />
       )}
       {hero.background_image && (
-        <img src={hero.background_image} alt="電腦背景" class="hidden md:block w-full h-full object-cover opacity-30" />
+        <Image 
+          src={hero.background_image} 
+          alt="電腦背景" 
+          width={1920}
+          height={1080}
+          loading="eager"
+          decoding="async"
+          sizes="(min-width: 769px) 100vw, 0px"
+          class="hidden md:block w-full h-full object-cover opacity-30" 
+        />
       )}
     </div>
   ) : (
