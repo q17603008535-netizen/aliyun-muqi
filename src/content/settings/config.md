@@ -1,4 +1,4 @@
 ---
 logo: /images/单独LOGO.png
-brand_name: 翡翠代購
+brand_name: 洛天翡翠
 ---
