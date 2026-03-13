@@ -27,9 +27,9 @@ interface Props {
 
 const { hero = {}, contacts = [] } = Astro.props;
 
-// 使用 public 目錄的圖片路徑
-const heroBgDesktop = '/images/人物 1.png?v=1';
-const heroBgMobile = '/images/人物 2.png?v=1';
+// 使用後端配置的圖片路徑，如果沒有配置則使用默認路徑
+const heroBgDesktop = hero.background_image || '/images/人物 1.png?v=1';
+const heroBgMobile = hero.mobile_background_image || '/images/人物 2.png?v=1';
 
 const defaultTitleLinesMobile = [
   { text: '專業翡翠原石買手' },
