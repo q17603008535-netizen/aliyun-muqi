@@ -54,7 +54,7 @@ const titleLines = hero.title_lines?.length ? hero.title_lines : defaultTitleLin
 const subtitleLines = hero.subtitle_lines?.length ? hero.subtitle_lines : defaultSubtitleLines;
 ---
 
-<section id="hero" class="relative min-h-[70vh] flex items-start md:items-center justify-center bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 overflow-hidden pt-20 md:pt-0">
+<section id="hero" class="relative min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 overflow-hidden pt-16 pb-12 md:pt-0 md:pb-0">
   {hero.background_image || hero.mobile_background_image ? (
     <div class="absolute inset-0">
       {hero.mobile_background_image && (
@@ -117,18 +117,6 @@ const subtitleLines = hero.subtitle_lines?.length ? hero.subtitle_lines : defaul
         查看產品
       </a>
     </div>
-    
-    <div class="md:hidden flex justify-center animate-bounce">
-    <svg class="w-6 h-6 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-    </svg>
-  </div>
-    
-    <div class="hidden md:flex justify-center absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-    <svg class="w-6 h-6 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-    </svg>
-  </div>
 </section>
 
 <div id="contact-modal" class="fixed inset-0 z-50 hidden">
