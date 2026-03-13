@@ -14,6 +14,6 @@ subtitle_lines_mobile:
   - text: 本地匯率優勢
   - text: 一物一證
 cta_text: 立即咨詢
-badge_text: 曼德勒翡翠原石專業代購
+badge_text: 緬甸翡翠原石專業代購
 youtube_url: https://www.youtube.com/watch?v=BC54zCSGL9s
 ---
