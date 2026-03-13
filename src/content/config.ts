@@ -73,9 +73,18 @@ const about = defineCollection({
   type: 'content',
   schema: z.object({
     experience_image: z.string().optional(),
-    experience_text: z.string().default('10年+行業經驗'),
+    experience_text: z.string().default('10年+'),
     title: z.string().default('專業翡翠原石買手'),
-    description: z.string().default('我們專注於從緬甸曼德勒礦區直接採購優質翡翠原石，擁有10年以上行業經驗，提供專業的翡翠選購建議和代購服務。'),
+    description: z.string().default('有自己獨特的買原石邏輯，保證客戶買到的原石都能做貨'),
+    feature_1_title: z.string().default('14年雕刻學徒出身'),
+    feature_1_description: z.string().default('2014年開始做雕刻學徒，潛心5年，2019年開始轉做直播，後來開始自己買石頭'),
+    feature_1_icon: z.string().default('盾牌'),
+    feature_2_title: z.string().default('忠實客戶'),
+    feature_2_description: z.string().default('跟隨3年以上的客戶 5人以上，口碑良好'),
+    feature_2_icon: z.string().default('人群'),
+    feature_3_title: z.string().default('經營理念'),
+    feature_3_description: z.string().default('不割韭菜，真實做生意'),
+    feature_3_icon: z.string().default('勾選'),
   }),
 });
 

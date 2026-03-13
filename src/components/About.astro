@@ -4,6 +4,15 @@ interface AboutData {
   experience_text?: string;
   title?: string;
   description?: string;
+  feature_1_title?: string;
+  feature_1_description?: string;
+  feature_1_icon?: string;
+  feature_2_title?: string;
+  feature_2_description?: string;
+  feature_2_icon?: string;
+  feature_3_title?: string;
+  feature_3_description?: string;
+  feature_3_icon?: string;
 }
 
 interface Props {
@@ -11,6 +20,51 @@ interface Props {
 }
 
 const { about = {} } = Astro.props;
+
+const defaultFeatures = [
+  {
+    title: "14年雕刻學徒出身",
+    description: "2014年開始做雕刻學徒，潛心5年，2019年開始轉做直播，後來開始自己買石頭",
+    icon: "盾牌"
+  },
+  {
+    title: "忠實客戶",
+    description: "跟隨3年以上的客戶 5人以上，口碑良好",
+    icon: "人群"
+  },
+  {
+    title: "經營理念",
+    description: "不割韭菜，真實做生意",
+    icon: "勾選"
+  }
+];
+
+const features = [
+  {
+    title: about.feature_1_title || defaultFeatures[0].title,
+    description: about.feature_1_description || defaultFeatures[0].description,
+    icon: about.feature_1_icon || defaultFeatures[0].icon
+  },
+  {
+    title: about.feature_2_title || defaultFeatures[1].title,
+    description: about.feature_2_description || defaultFeatures[1].description,
+    icon: about.feature_2_icon || defaultFeatures[1].icon
+  },
+  {
+    title: about.feature_3_title || defaultFeatures[2].title,
+    description: about.feature_3_description || defaultFeatures[2].description,
+    icon: about.feature_3_icon || defaultFeatures[2].icon
+  }
+];
+
+function getIcon(iconName: string) {
+  const icons: Record<string, string> = {
+    "盾牌": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+    "人群": "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z",
+    "勾選": "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+  };
+  return icons[iconName] || icons["盾牌"];
+}
 ---
 
 <section id="about" class="py-20 bg-white fade-in-section">
@@ -20,15 +74,15 @@ const { about = {} } = Astro.props;
       <div class="w-24 h-1 bg-primary mx-auto"></div>
     </div>
     
-    <div class="grid lg:grid-cols-2 gap-12 items-center">
-      <div class="relative">
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
+      <div class="relative order-2 lg:order-1">
         {about.experience_image ? (
-          <div class="aspect-square bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl flex items-center justify-center overflow-hidden">
+          <div class="aspect-square bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl flex flex-col items-center justify-center overflow-hidden">
             <img src={about.experience_image} alt="經驗" class="w-full h-full object-cover" />
             {about.experience_text && (
-              <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg">
+              <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm px-6 py-3 rounded-lg shadow-lg text-center w-auto min-w-[160px]">
                 <div class="text-2xl font-bold text-primary">{about.experience_text}</div>
-                <div class="text-gray-600 text-sm text-center">行業經驗</div>
+                <div class="text-gray-600 text-sm">行業經驗</div>
               </div>
             )}
           </div>
@@ -42,51 +96,29 @@ const { about = {} } = Astro.props;
         )}
       </div>
       
-      <div>
+      <div class="order-1 lg:order-2">
         <h3 class="text-2xl font-semibold text-gray-900 mb-6">
           {about.title || "專業翡翠原石買手"}
         </h3>
         
         <div class="space-y-6">
-          <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-              </svg>
+          {features.map((feature, index) => (
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={getIcon(feature.icon)}/>
+                </svg>
+              </div>
+              <div class="flex-1">
+                <h4 class="font-semibold text-gray-900 mb-1">{feature.title}</h4>
+                <p class="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
+              </div>
             </div>
-            <div>
-              <h4 class="font-semibold text-gray-900 mb-1">14年雕刻學徒出身</h4>
-              <p class="text-gray-600 text-sm">2014年開始做雕刻學徒，潛心5年，2019年開始轉做直播，後來開始自己買石頭</p>
-            </div>
-          </div>
-          
-          <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-              </svg>
-            </div>
-            <div>
-              <h4 class="font-semibold text-gray-900 mb-1">忠實客戶</h4>
-              <p class="text-gray-600 text-sm">跟隨3年以上的客戶 <span class="text-primary font-bold">5人以上</span>，口碑良好</p>
-            </div>
-          </div>
-          
-          <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-              </svg>
-            </div>
-            <div>
-              <h4 class="font-semibold text-gray-900 mb-1">經營理念</h4>
-              <p class="text-gray-600 text-sm">不割韭菜，真實做生意</p>
-            </div>
-          </div>
+          ))}
         </div>
         
         <div class="mt-8 p-4 bg-stone-50 rounded-lg border-l-4 border-primary">
-          <p class="text-gray-700 italic">
+          <p class="text-gray-700 italic leading-relaxed">
             {about.description || "有自己獨特的買原石邏輯，保證客戶買到的原石都能做貨"}
           </p>
         </div>
