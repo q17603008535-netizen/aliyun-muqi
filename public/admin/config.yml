@@ -70,6 +70,7 @@ collections:
         fields:
           - { name: text, label: 副標題文字, widget: string }
       - { name: cta_text, label: 按鈕文字, widget: string, default: "立即咨詢" }
+      - { name: badge_text, label: 頂部標籤文字, widget: string, default: "曼德勒翡翠原石專業代購" }
       - { name: youtube_url, label: YouTube影片連結, widget: string, hint: "例如: https://www.youtube.com/embed/xxxxx", required: false }
 
   - name: about

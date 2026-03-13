@@ -52,6 +52,7 @@ const hero = defineCollection({
       { text: '一物一證｜只賺取20%代購費' },
     ]),
     cta_text: z.string().default('立即咨詢'),
+    badge_text: z.string().default('曼德勒翡翠原石專業代購'),
     youtube_url: z.string().optional(),
   }),
 });
