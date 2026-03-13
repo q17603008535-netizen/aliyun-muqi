@@ -59,6 +59,36 @@ collections:
       - { name: title, label: 標題, widget: string, default: "專業翡翠原石買手" }
       - { name: description, label: 介紹文字, widget: text, default: "我們專注於從緬甸曼德勒礦區直接採購優質翡翠原石，擁有10年以上行業經驗，提供專業的翡翠選購建議和代購服務。" }
 
+  - name: trust
+    label: 信任保證
+    folder: src/content/trust
+    create: false
+    slug: "config"
+    fields:
+      - { name: title, label: 標題, widget: string, default: "信任保證" }
+      - name: items
+        label: 保證項目
+        widget: list
+        fields:
+          - { name: icon, label: 圖標, widget: select, options: ["盾牌", "貨幣", "證書", "循環", "商務", "切割", "礦石", "眼睛", "星星", "握手"], default: "盾牌" }
+          - { name: title, label: 標題, widget: string }
+          - { name: description, label: 描述, widget: text }
+
+  - name: why_us
+    label: 為什麼選擇我們
+    folder: src/content/why_us
+    create: false
+    slug: "config"
+    fields:
+      - { name: title, label: 標題, widget: string, default: "為什麼選擇我們" }
+      - name: items
+        label: 優勢項目
+        widget: list
+        fields:
+          - { name: icon, label: 圖標, widget: select, options: ["價格優勢", "品質保證", "專業可靠", "客戶口碑", "快速配送", "安全交易"], default: "價格優勢" }
+          - { name: title, label: 標題, widget: string }
+          - { name: description, label: 描述, widget: text }
+
   - name: contact
     label: 聯繫方式
     folder: src/content/contact

@@ -1,0 +1,22 @@
+---
+title: 信任保證
+items:
+  - icon: 盾牌
+    title: 一物一證
+    description: 每件翡翠原石均附帶專業鑒定證書，保證天然A貨，品質有保障
+  - icon: 貨幣
+    title: 本地匯率
+    description: 緬甸本地匯率，比國際匯率低近 50%，價格更優惠
+  - icon: 循環
+    title: 7天鑑賞期
+    description: 提供7天無條件退換貨服務，讓您有充足時間考慮
+  - icon: 商務
+    title: 代購費透明
+    description: 只賺取 20% 代購費，絕不額外收費
+  - icon: 商務
+    title: 瑞麗公司
+    description: 瑞麗設有分公司，正規經營，誠信可靠
+  - icon: 切割
+    title: 加工廠合作
+    description: 與專業加工廠合作，提供切割、雕刻等一站式服務
+---

@@ -31,6 +31,12 @@ const hero = heroData[0]?.data || {};
 const aboutData = await getCollection('about');
 const about = aboutData[0]?.data || {};
 
+const trustData = await getCollection('trust');
+const trust = trustData[0]?.data || {};
+
+const whyUsData = await getCollection('why_us');
+const whyUs = whyUsData[0]?.data || {};
+
 const settingsData = await getCollection('settings');
 const settings = settingsData[0]?.data || {};
 ---
@@ -41,9 +47,9 @@ const settings = settingsData[0]?.data || {};
   <main>
     <Hero hero={hero} contacts={contacts} />
     <About about={about} />
-    <Trust />
+    <Trust trust={trust} />
     <Products products={products} />
-    <WhyUs />
+    <WhyUs whyUs={whyUs} />
     <Testimonials testimonials={testimonials} />
     <Contact contacts={contacts} />
   </main>
@@ -58,3 +64,25 @@ const settings = settingsData[0]?.data || {};
     scroll-margin-top: 4rem;
   }
 </style>
+
+<script>
+  function initFadeInAnimations() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    document.querySelectorAll('.fade-in-section').forEach(section => {
+      observer.observe(section);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initFadeInAnimations);
+  document.addEventListener('astro:page-load', initFadeInAnimations);
+</script>

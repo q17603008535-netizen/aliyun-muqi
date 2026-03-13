@@ -29,7 +29,7 @@ const { contacts = [] } = Astro.props;
 <div id="floating-modal" class="fixed inset-0 z-50 hidden">
   <div class="absolute inset-0 bg-black/60 backdrop-blur-sm floating-modal-overlay"></div>
   <div class="flex items-center justify-center min-h-screen p-4">
-    <div class="relative bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 transform transition-all">
+    <div class="floating-modal-content relative bg-white rounded-2xl shadow-2xl max-w-md w-full p-6">
       <button class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 floating-close-btn">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
@@ -85,6 +85,7 @@ const { contacts = [] } = Astro.props;
   const floatingModal = document.getElementById('floating-modal');
   const floatingCloseBtn = document.querySelector('.floating-close-btn');
   const floatingOverlay = document.querySelector('.floating-modal-overlay');
+  const floatingModalContent = document.querySelector('.floating-modal-content');
   const floatingToast = document.querySelector('.floating-toast');
   
   function showFloatingBtn() {
@@ -98,11 +99,19 @@ const { contacts = [] } = Astro.props;
   function openModal() {
     floatingModal?.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
+    requestAnimationFrame(() => {
+      floatingModalContent?.classList.add('modal-enter');
+    });
   }
   
   function closeModal() {
-    floatingModal?.classList.add('hidden');
-    document.body.style.overflow = '';
+    floatingModalContent?.classList.remove('modal-enter');
+    floatingModalContent?.classList.add('modal-exit');
+    setTimeout(() => {
+      floatingModal?.classList.add('hidden');
+      document.body.style.overflow = '';
+      floatingModalContent?.classList.remove('modal-exit');
+    }, 300);
   }
   
   window.addEventListener('scroll', () => {
