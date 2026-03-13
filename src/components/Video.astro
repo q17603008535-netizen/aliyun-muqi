@@ -6,16 +6,27 @@ interface Props {
 const { youtubeUrl } = Astro.props;
 
 function getYoutubeEmbedUrl(url: string): string {
-  if (!url) return '';
-  if (url.includes('embed')) return url;
-  const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&?]+)/);
-  if (match && match[1]) {
-    return `https://www.youtube.com/embed/${match[1]}`;
+  if (!url || typeof url !== 'string') return '';
+  
+  const trimmedUrl = url.trim();
+  if (!trimmedUrl) return '';
+  
+  if (trimmedUrl.includes('embed')) {
+    const match = trimmedUrl.match(/youtube\.com\/embed\/([^&?/]+)/);
+    if (match && match[1]) {
+      return `https://www.youtube.com/embed/${match[1]}`;
+    }
   }
-  return url;
+  
+  const watchMatch = trimmedUrl.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&?]+)/);
+  if (watchMatch && watchMatch[1]) {
+    return `https://www.youtube.com/embed/${watchMatch[1]}`;
+  }
+  
+  return '';
 }
 
-const embedUrl = youtubeUrl ? getYoutubeEmbedUrl(youtubeUrl) : '';
+const embedUrl = getYoutubeEmbedUrl(youtubeUrl || '');
 ---
 
 {embedUrl && (
