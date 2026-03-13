@@ -20,6 +20,20 @@ const products = defineCollection({
   }),
 });
 
+const products_config = defineCollection({
+  type: 'content',
+  schema: z.object({
+    name_label: z.string().default('產品名稱'),
+    name_visible: z.boolean().default(true),
+    weight_label: z.string().default('重量'),
+    weight_visible: z.boolean().default(true),
+    price_label: z.string().default('價格'),
+    price_visible: z.boolean().default(true),
+    description_label: z.string().default('描述'),
+    description_visible: z.boolean().default(true),
+  }),
+});
+
 const hero = defineCollection({
   type: 'content',
   schema: z.object({
@@ -103,6 +117,7 @@ const testimonials = defineCollection({
 export const collections = {
   settings,
   products,
+  products_config,
   hero,
   about,
   trust,

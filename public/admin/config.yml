@@ -36,6 +36,21 @@ collections:
       - { name: image, label: 產品圖片, widget: image }
       - { name: featured, label: 顯示首頁, widget: boolean, default: false }
 
+  - name: products_config
+    label: 產品字段設置
+    folder: src/content/products_config
+    create: false
+    slug: "config"
+    fields:
+      - { name: name_label, label: 產品名稱標籤, widget: string, default: "產品名稱" }
+      - { name: name_visible, label: 顯示產品名稱, widget: boolean, default: true }
+      - { name: weight_label, label: 重量標籤, widget: string, default: "重量" }
+      - { name: weight_visible, label: 顯示重量, widget: boolean, default: true }
+      - { name: price_label, label: 價格標籤, widget: string, default: "價格" }
+      - { name: price_visible, label: 顯示價格, widget: boolean, default: true }
+      - { name: description_label, label: 描述標籤, widget: string, default: "描述" }
+      - { name: description_visible, label: 顯示描述, widget: boolean, default: true }
+
   - name: hero
     label: 首頁Banner
     folder: src/content/hero

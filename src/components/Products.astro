@@ -8,6 +8,17 @@ interface Product {
   featured?: boolean;
 }
 
+interface ProductsConfig {
+  name_label?: string;
+  name_visible?: boolean;
+  weight_label?: string;
+  weight_visible?: boolean;
+  price_label?: string;
+  price_visible?: boolean;
+  description_label?: string;
+  description_visible?: boolean;
+}
+
 interface ContactItem {
   type: string;
   value: string;
@@ -16,6 +27,7 @@ interface ContactItem {
 
 interface Props {
   products?: Product[];
+  productsConfig?: ProductsConfig;
   contacts?: ContactItem[];
   title?: string;
   subtitle?: string;
@@ -23,20 +35,32 @@ interface Props {
 
 const { 
   products = [],
+  productsConfig = {},
   contacts = [],
   title = "產品展示",
   subtitle = "每週更新10款以上翡翠原石"
 } = Astro.props;
 
+const config = {
+  name_label: productsConfig.name_label || '產品名稱',
+  name_visible: productsConfig.name_visible !== false,
+  weight_label: productsConfig.weight_label || '重量',
+  weight_visible: productsConfig.weight_visible !== false,
+  price_label: productsConfig.price_label || '價格',
+  price_visible: productsConfig.price_visible !== false,
+  description_label: productsConfig.description_label || '描述',
+  description_visible: productsConfig.description_visible !== false,
+};
+
 const displayProducts = products.length > 0 ? products : [
-  { name: "翡翠原石 #001", weight: "2.5kg", price: "請咨詢", description: "滿綠色澤，水頭足" },
-  { name: "翡翠原石 #002", weight: "1.8kg", price: "請咨詢", description: "紫羅蘭色，種水好" },
-  { name: "翡翠原石 #003", weight: "3.2kg", price: "請咨詢", description: "春帶彩，色彩鮮豔" },
-  { name: "翡翠原石 #004", weight: "2.1kg", price: "請咨詢", description: "玻璃種，透明度高" },
-  { name: "翡翠原石 #005", weight: "1.5kg", price: "請咨詢", description: "陽綠色，品質上乘" },
-  { name: "翡翠原石 #006", weight: "2.8kg", price: "請咨詢", description: "藍綠色，適合雕刻" },
-  { name: "翡翠原石 #007", weight: "2.0kg", price: "請咨詢", description: "帝王綠，極品收藏" },
-  { name: "翡翠原石 #008", weight: "1.9kg", price: "請咨詢", description: "白底青，質地細膩" },
+  { name: "翡翠原石 #001", weight: "2.5kg", price: "", description: "滿綠色澤，水頭足" },
+  { name: "翡翠原石 #002", weight: "1.8kg", price: "", description: "紫羅蘭色，種水好" },
+  { name: "翡翠原石 #003", weight: "3.2kg", price: "", description: "春帶彩，色彩鮮豔" },
+  { name: "翡翠原石 #004", weight: "2.1kg", price: "", description: "玻璃種，透明度高" },
+  { name: "翡翠原石 #005", weight: "1.5kg", price: "", description: "陽綠色，品質上乘" },
+  { name: "翡翠原石 #006", weight: "2.8kg", price: "", description: "藍綠色，適合雕刻" },
+  { name: "翡翠原石 #007", weight: "2.0kg", price: "", description: "帝王綠，極品收藏" },
+  { name: "翡翠原石 #008", weight: "1.9kg", price: "", description: "白底青，質地細膩" },
 ];
 ---
 
@@ -80,21 +104,26 @@ const displayProducts = products.length > 0 ? products : [
           </div>
           
           <div class="p-4">
-            <h3 class="font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
-              {product.name}
-            </h3>
-            <p class="text-sm text-gray-500 mb-2">{product.description}</p>
-            <div class="flex items-center justify-between text-sm">
-              <span class="text-gray-600">重量：{product.weight}</span>
-              <span class="text-primary font-semibold">{product.price}</span>
-            </div>
+            {config.name_visible && (
+              <h3 class="font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
+                {product.name}
+              </h3>
+            )}
+            {config.description_visible && (
+              <p class="text-sm text-gray-500 mb-2">{product.description}</p>
+            )}
+            {config.weight_visible && (
+              <div class="flex items-center justify-between text-sm">
+                <span class="text-gray-600">{config.weight_label}：{product.weight}</span>
+              </div>
+            )}
           </div>
         </div>
       ))}
     </div>
     
     <div class="text-center mt-12">
-      <a href="#contact" class="inline-flex items-center justify-center px-6 py-3 border border-primary text-primary hover:bg-primary hover:text-white font-medium rounded-lg transition-all duration-300">
+      <a href="#contact" class="inline-flex items-center justify-center px-8 py-4 border border-primary text-primary hover:bg-white hover:text-primary font-medium rounded-lg btn-hover">
         查看更多產品
         <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>

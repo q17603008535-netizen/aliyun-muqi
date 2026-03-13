@@ -23,6 +23,9 @@ const contacts = contactData
 const productsData = await getCollection('products');
 const products = productsData.map(p => p.data);
 
+const productsConfigData = await getCollection('products_config');
+const productsConfig = productsConfigData[0]?.data || {};
+
 const testimonialsData = await getCollection('testimonials');
 const testimonials = testimonialsData.map(t => t.data);
 
@@ -50,7 +53,7 @@ const settings = settingsData[0]?.data || {};
     <Video youtubeUrl={hero.youtube_url} />
     <About about={about} />
     <Trust trust={trust} />
-    <Products products={products} contacts={contacts} />
+    <Products products={products} productsConfig={productsConfig} contacts={contacts} />
     <WhyUs whyUs={whyUs} />
     <Testimonials testimonials={testimonials} />
     <Contact contacts={contacts} />
