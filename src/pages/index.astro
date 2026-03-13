@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Hero from '../components/Hero.astro';
+import Video from '../components/Video.astro';
 import About from '../components/About.astro';
 import Trust from '../components/Trust.astro';
 import Products from '../components/Products.astro';
@@ -46,6 +47,7 @@ const settings = settingsData[0]?.data || {};
   
   <main>
     <Hero hero={hero} contacts={contacts} />
+    <Video youtubeUrl={hero.youtube_url} />
     <About about={about} />
     <Trust trust={trust} />
     <Products products={products} />

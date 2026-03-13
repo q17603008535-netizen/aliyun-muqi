@@ -47,6 +47,7 @@ collections:
       - { name: title, label: 主標題, widget: string, default: "專業翡翠原石買手｜曼德勒直採｜10年經驗" }
       - { name: subtitle, label: 副標題, widget: string, default: "本地匯率優勢｜一物一證｜只賺取20%代購費" }
       - { name: cta_text, label: 按鈕文字, widget: string, default: "立即咨詢" }
+      - { name: youtube_url, label: YouTube影片連結, widget: string, hint: "例如: https://www.youtube.com/embed/xxxxx", required: false }
 
   - name: about
     label: 關於我們

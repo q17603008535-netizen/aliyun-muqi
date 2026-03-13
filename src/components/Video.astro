@@ -1,0 +1,43 @@
+---
+interface Props {
+  youtubeUrl?: string;
+}
+
+const { youtubeUrl } = Astro.props;
+
+function getYoutubeEmbedUrl(url: string): string {
+  if (!url) return '';
+  if (url.includes('embed')) return url;
+  const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&?]+)/);
+  if (match && match[1]) {
+    return `https://www.youtube.com/embed/${match[1]}`;
+  }
+  return url;
+}
+
+const embedUrl = youtubeUrl ? getYoutubeEmbedUrl(youtubeUrl) : '';
+---
+
+{embedUrl && (
+  <section id="video" class="py-16 bg-white fade-in-section">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 fade-in-section fade-in-delay-1">
+          宣傳影片
+        </h2>
+        <div class="w-16 h-1 bg-primary mx-auto fade-in-section fade-in-delay-2"></div>
+      </div>
+      
+      <div class="relative aspect-video rounded-xl overflow-hidden shadow-lg fade-in-section fade-in-delay-3">
+        <iframe
+          src={embedUrl}
+          title="宣傳影片"
+          class="absolute inset-0 w-full h-full"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </section>
+)}
