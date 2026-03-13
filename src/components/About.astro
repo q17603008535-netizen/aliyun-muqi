@@ -4,6 +4,12 @@ interface AboutData {
   experience_text?: string;
   title?: string;
   description?: string;
+  feature_1_title?: string;
+  feature_1_description?: string;
+  feature_2_title?: string;
+  feature_2_description?: string;
+  feature_3_title?: string;
+  feature_3_description?: string;
 }
 
 interface Props {
@@ -11,6 +17,36 @@ interface Props {
 }
 
 const { about = {} } = Astro.props;
+
+const defaultFeatures = [
+  {
+    title: "14年雕刻學徒出身",
+    description: "2014年開始做雕刻學徒，潛心5年，2019年開始轉做直播，後來開始自己買石頭"
+  },
+  {
+    title: "忠實客戶",
+    description: "跟隨3年以上的客戶 5人以上，口碑良好"
+  },
+  {
+    title: "經營理念",
+    description: "不割韭菜，真實做生意"
+  }
+];
+
+const features = [
+  {
+    title: about.feature_1_title || defaultFeatures[0].title,
+    description: about.feature_1_description || defaultFeatures[0].description
+  },
+  {
+    title: about.feature_2_title || defaultFeatures[1].title,
+    description: about.feature_2_description || defaultFeatures[1].description
+  },
+  {
+    title: about.feature_3_title || defaultFeatures[2].title,
+    description: about.feature_3_description || defaultFeatures[2].description
+  }
+];
 ---
 
 <section id="about" class="py-20 bg-white fade-in-section">
@@ -23,8 +59,14 @@ const { about = {} } = Astro.props;
     <div class="grid lg:grid-cols-2 gap-12 items-center">
       <div class="relative">
         {about.experience_image ? (
-          <div class="aspect-square bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl flex items-center justify-center overflow-hidden">
+          <div class="aspect-square bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl flex flex-col items-center justify-center overflow-hidden">
             <img src={about.experience_image} alt="經驗" class="w-full h-full object-cover" />
+            {about.experience_text && (
+              <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm px-6 py-3 rounded-lg shadow-lg text-center w-auto min-w-[160px]">
+                <div class="text-2xl font-bold text-primary">{about.experience_text}</div>
+                <div class="text-gray-600 text-sm">行業經驗</div>
+              </div>
+            )}
           </div>
         ) : (
           <div class="aspect-square bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl flex items-center justify-center">
@@ -49,8 +91,8 @@ const { about = {} } = Astro.props;
               </svg>
             </div>
             <div>
-              <h4 class="font-semibold text-gray-900 mb-1">14年雕刻學徒出身</h4>
-              <p class="text-gray-600 text-sm">2014年開始做雕刻學徒，潛心5年，2019年開始轉做直播，後來開始自己買石頭</p>
+              <h4 class="font-semibold text-gray-900 mb-1">{features[0].title}</h4>
+              <p class="text-gray-600 text-sm leading-relaxed">{features[0].description}</p>
             </div>
           </div>
           
@@ -61,8 +103,8 @@ const { about = {} } = Astro.props;
               </svg>
             </div>
             <div>
-              <h4 class="font-semibold text-gray-900 mb-1">忠實客戶</h4>
-              <p class="text-gray-600 text-sm">跟隨3年以上的客戶 <span class="text-primary font-bold">5人以上</span>，口碑良好</p>
+              <h4 class="font-semibold text-gray-900 mb-1">{features[1].title}</h4>
+              <p class="text-gray-600 text-sm leading-relaxed">{features[1].description}</p>
             </div>
           </div>
           
@@ -73,14 +115,14 @@ const { about = {} } = Astro.props;
               </svg>
             </div>
             <div>
-              <h4 class="font-semibold text-gray-900 mb-1">經營理念</h4>
-              <p class="text-gray-600 text-sm">不割韭菜，真實做生意</p>
+              <h4 class="font-semibold text-gray-900 mb-1">{features[2].title}</h4>
+              <p class="text-gray-600 text-sm leading-relaxed">{features[2].description}</p>
             </div>
           </div>
         </div>
         
         <div class="mt-8 p-4 bg-stone-50 rounded-lg border-l-4 border-primary">
-          <p class="text-gray-700 italic">
+          <p class="text-gray-700 italic leading-relaxed">
             {about.description || "有自己獨特的買原石邏輯，保證客戶買到的原石都能做貨"}
           </p>
         </div>
