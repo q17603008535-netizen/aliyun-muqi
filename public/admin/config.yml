@@ -14,6 +14,15 @@ i18n:
   default_locale: zh-TW
 
 collections:
+  - name: settings
+    label: 網站設置
+    folder: src/content/settings
+    create: false
+    slug: "config"
+    fields:
+      - { name: logo, label: Logo圖標, widget: image, hint: "建議尺寸 100x100 方形PNG" }
+      - { name: brand_name, label: 品牌名稱, widget: string, default: "翡翠代購" }
+
   - name: products
     label: 產品管理
     folder: src/content/products

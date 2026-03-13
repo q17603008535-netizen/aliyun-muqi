@@ -1,5 +1,13 @@
 import { defineCollection, z } from 'astro:content';
 
+const settings = defineCollection({
+  type: 'content',
+  schema: z.object({
+    logo: z.string().optional(),
+    brand_name: z.string().default('翡翠代購'),
+  }),
+});
+
 const products = defineCollection({
   type: 'content',
   schema: z.object({
@@ -56,6 +64,7 @@ const testimonials = defineCollection({
 });
 
 export const collections = {
+  settings,
   products,
   hero,
   about,

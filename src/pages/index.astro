@@ -29,10 +29,13 @@ const hero = heroData[0]?.data || {};
 
 const aboutData = await getCollection('about');
 const about = aboutData[0]?.data || {};
+
+const settingsData = await getCollection('settings');
+const settings = settingsData[0]?.data || {};
 ---
 
 <Layout title="翡翠原石代購｜曼德勒專業買手｜10年經驗">
-  <Navbar />
+  <Navbar settings={settings} />
   
   <main>
     <Hero hero={hero} contacts={contacts} />
