@@ -3,7 +3,9 @@ interface HeroData {
   background_image?: string;
   mobile_background_image?: string;
   title_lines?: { text: string }[];
+  title_lines_mobile?: { text: string }[];
   subtitle_lines?: { text: string }[];
+  subtitle_lines_mobile?: { text: string }[];
   cta_text?: string;
   badge_text?: string;
   youtube_url?: string;
@@ -25,6 +27,19 @@ interface Props {
 
 const { hero = {}, contacts = [] } = Astro.props;
 
+const defaultTitleLinesMobile = [
+  { text: '專業翡翠原石買手' },
+  { text: '曼德勒直採' },
+];
+
+const defaultSubtitleLinesMobile = [
+  { text: '本地匯率優勢' },
+  { text: '一物一證' },
+];
+
+const titleLinesMobile = hero.title_lines_mobile?.length ? hero.title_lines_mobile : defaultTitleLinesMobile;
+const subtitleLinesMobile = hero.subtitle_lines_mobile?.length ? hero.subtitle_lines_mobile : defaultSubtitleLinesMobile;
+
 const defaultTitleLines = [
   { text: '專業翡翠原石買手' },
   { text: '曼德勒直採｜10年經驗' },
@@ -39,7 +54,7 @@ const titleLines = hero.title_lines?.length ? hero.title_lines : defaultTitleLin
 const subtitleLines = hero.subtitle_lines?.length ? hero.subtitle_lines : defaultSubtitleLines;
 ---
 
-<section id="hero" class="relative min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 overflow-hidden pt-16 md:pt-0">
+<section id="hero" class="relative min-h-[70vh] flex items-start md:items-center justify-center bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 overflow-hidden pt-20 md:pt-0">
   {hero.background_image || hero.mobile_background_image ? (
     <div class="absolute inset-0">
       {hero.mobile_background_image && (
@@ -63,15 +78,29 @@ const subtitleLines = hero.subtitle_lines?.length ? hero.subtitle_lines : defaul
     </div>
     
     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-3 sm:mb-4 leading-tight text-center">
-      {titleLines.map((line, index) => (
-        <span class="block">{line.text}</span>
-      ))}
+      <span class="hidden md:inline">
+        {titleLines.map((line, index) => (
+          <span class="block">{line.text}</span>
+        ))}
+      </span>
+      <span class="md:hidden">
+        {titleLinesMobile.map((line, index) => (
+          <span class="block">{line.text}</span>
+        ))}
+      </span>
     </h1>
     
     <p class="text-lg sm:text-xl text-stone-300 mb-6 sm:mb-8 max-w-2xl mx-auto text-center">
-      {subtitleLines.map((line, index) => (
-        <span class="block">{line.text}</span>
-      ))}
+      <span class="hidden md:inline">
+        {subtitleLines.map((line, index) => (
+          <span class="block">{line.text}</span>
+        ))}
+      </span>
+      <span class="md:hidden">
+        {subtitleLinesMobile.map((line, index) => (
+          <span class="block">{line.text}</span>
+        ))}
+      </span>
     </p>
     
     <div class="flex gap-4 justify-center items-center flex-wrap mb-8">

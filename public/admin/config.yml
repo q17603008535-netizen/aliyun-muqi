@@ -64,8 +64,18 @@ collections:
         widget: list
         fields:
           - { name: text, label: 標題文字, widget: string }
+      - name: title_lines_mobile
+        label: 主標題(手機端)
+        widget: list
+        fields:
+          - { name: text, label: 標題文字, widget: string }
       - name: subtitle_lines
         label: 副標題
+        widget: list
+        fields:
+          - { name: text, label: 副標題文字, widget: string }
+      - name: subtitle_lines_mobile
+        label: 副標題(手機端)
         widget: list
         fields:
           - { name: text, label: 副標題文字, widget: string }
