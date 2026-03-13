@@ -103,7 +103,7 @@ const subtitleLines = hero.subtitle_lines?.length ? hero.subtitle_lines : defaul
       </div>
     </div>
     
-    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-3 sm:mb-4 leading-tight text-center">
+    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight text-center">
       <span class="hidden md:inline">
         {titleLines.map((line, index) => (
           <span class="block">{line.text}</span>
@@ -116,7 +116,7 @@ const subtitleLines = hero.subtitle_lines?.length ? hero.subtitle_lines : defaul
       </span>
     </h1>
     
-    <p class="text-lg sm:text-xl text-stone-300 mb-6 sm:mb-8 max-w-2xl mx-auto text-center">
+    <p class="text-xl sm:text-2xl text-stone-200 mb-8 sm:mb-10 max-w-3xl mx-auto text-center font-light">
       <span class="hidden md:inline">
         {subtitleLines.map((line, index) => (
           <span class="block">{line.text}</span>
@@ -136,7 +136,7 @@ const subtitleLines = hero.subtitle_lines?.length ? hero.subtitle_lines : defaul
         </svg>
         {hero.cta_text || "立即咨詢"}
       </button>
-      <a href="#products" class="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 border border-primary text-primary hover:bg-white hover:text-primary font-medium rounded-lg btn-hover">
+      <a href="#products" class="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 border border-primary text-white hover:bg-white hover:text-primary font-medium rounded-lg transition-all duration-300 hover:scale-102">
         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
         </svg>
