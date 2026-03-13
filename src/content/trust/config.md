@@ -7,10 +7,10 @@ items:
   - icon: 貨幣
     title: 本地匯率
     description: 緬甸本地匯率 | 比國際匯率低近 50% | 價格更優惠
-  - icon: 循環
+  - icon: 握手
     title: 完善售後服務
     description: 根據您的喜好專門挑選 | 定制全程跟蹤 | 不滿意可隨時溝通
-  - icon: 商務
+  - icon: 貨幣
     title: 代購費透明
     description: 只賺取 20% 代購費 | 絕不額外收費
   - icon: 商務
