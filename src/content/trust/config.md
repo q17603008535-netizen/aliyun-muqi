@@ -8,8 +8,8 @@ items:
     title: 本地匯率
     description: 緬甸本地匯率，比國際匯率低近 50%，價格更優惠
   - icon: 循環
-    title: 7天鑑賞期
-    description: 提供7天無條件退換貨服務，讓您有充足時間考慮
+    title: 完善售後服務
+    description: 根據您的喜好專門挑選 | 定制全程跟蹤 | 不滿意可隨時溝通
   - icon: 商務
     title: 代購費透明
     description: 只賺取 20% 代購費，絕不額外收費
