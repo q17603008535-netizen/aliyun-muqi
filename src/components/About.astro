@@ -25,6 +25,12 @@ const { about = {} } = Astro.props;
         {about.experience_image ? (
           <div class="aspect-square bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl flex items-center justify-center overflow-hidden">
             <img src={about.experience_image} alt="經驗" class="w-full h-full object-cover" />
+            {about.experience_text && (
+              <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg">
+                <div class="text-2xl font-bold text-primary">{about.experience_text}</div>
+                <div class="text-gray-600 text-sm text-center">行業經驗</div>
+              </div>
+            )}
           </div>
         ) : (
           <div class="aspect-square bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl flex items-center justify-center">
