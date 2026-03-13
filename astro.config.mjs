@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://yourdomain.com',
+  site: 'https://jade-website-v3.vercel.app',
   vite: {
     plugins: [tailwindcss()]
   },
