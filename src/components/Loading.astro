@@ -1,0 +1,65 @@
+---
+interface Props {
+  fullscreen?: boolean;
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  color?: 'primary' | 'white' | 'gray';
+  text?: string;
+  showText?: boolean;
+}
+
+const {
+  fullscreen = false,
+  size = 'md',
+  color = 'primary',
+  text = '加載中...',
+  showText = true
+} = Astro.props;
+
+const sizeClasses = {
+  sm: 'h-6 w-6 border-2',
+  md: 'h-12 w-12 border-3',
+  lg: 'h-16 w-16 border-4',
+  xl: 'h-20 w-20 border-4'
+};
+
+const colorClasses = {
+  primary: 'border-primary border-t-transparent',
+  white: 'border-white border-t-transparent',
+  gray: 'border-gray-400 border-t-transparent'
+};
+
+const textSizeClasses = {
+  sm: 'text-sm',
+  md: 'text-base',
+  lg: 'text-lg',
+  xl: 'text-xl'
+};
+---
+
+{if fullscreen}
+  <div class="fixed inset-0 bg-white/80 backdrop-blur-sm z-50 flex items-center justify-center">
+    <div class="text-center">
+      <div class={`animate-spin rounded-full ${sizeClasses[size]} ${colorClasses[color]} mx-auto`}></div>
+      {showText && (
+        <p class={`mt-4 ${textSizeClasses[size]} text-gray-600 font-medium`}>{text}</p>
+      )}
+    </div>
+  </div>
+{else}
+  <div class="inline-flex flex-col items-center justify-center">
+    <div class={`animate-spin rounded-full ${sizeClasses[size]} ${colorClasses[color]}`}></div>
+    {showText && (
+      <p class={`mt-2 ${textSizeClasses[size]} text-gray-600 font-medium`}>{text}</p>
+    )}
+  </div>
+{/if}
+
+<style>
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+</style>
