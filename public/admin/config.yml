@@ -3,7 +3,7 @@ backend:
   repo: q17603008535-netizen/jade-website-v3
   branch: main
 
-media_folder: static/images
+media_folder: public/images
 public_folder: /images
 
 local_backend: false
