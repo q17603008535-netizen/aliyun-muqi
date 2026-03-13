@@ -59,8 +59,16 @@ collections:
     fields:
       - { name: background_image, label: 電腦端背景圖片, widget: image, hint: "建議比例 16:9" }
       - { name: mobile_background_image, label: 手機端背景圖片, widget: image, hint: "建議比例 3:4" }
-      - { name: title, label: 主標題, widget: string, default: "專業翡翠原石買手｜曼德勒直採｜10年經驗" }
-      - { name: subtitle, label: 副標題, widget: string, default: "本地匯率優勢｜一物一證｜只賺取20%代購費" }
+      - name: title_lines
+        label: 主標題
+        widget: list
+        fields:
+          - { name: text, label: 標題文字, widget: string }
+      - name: subtitle_lines
+        label: 副標題
+        widget: list
+        fields:
+          - { name: text, label: 副標題文字, widget: string }
       - { name: cta_text, label: 按鈕文字, widget: string, default: "立即咨詢" }
       - { name: youtube_url, label: YouTube影片連結, widget: string, hint: "例如: https://www.youtube.com/embed/xxxxx", required: false }
 

@@ -39,8 +39,18 @@ const hero = defineCollection({
   schema: z.object({
     background_image: z.string().optional(),
     mobile_background_image: z.string().optional(),
-    title: z.string().default('專業翡翠原石買手｜曼德勒直採｜10年經驗'),
-    subtitle: z.string().default('本地匯率優勢｜一物一證｜只賺取20%代購費'),
+    title_lines: z.array(z.object({
+      text: z.string(),
+    })).default([
+      { text: '專業翡翠原石買手' },
+      { text: '曼德勒直採｜10年經驗' },
+    ]),
+    subtitle_lines: z.array(z.object({
+      text: z.string(),
+    })).default([
+      { text: '本地匯率優勢' },
+      { text: '一物一證｜只賺取20%代購費' },
+    ]),
     cta_text: z.string().default('立即咨詢'),
     youtube_url: z.string().optional(),
   }),

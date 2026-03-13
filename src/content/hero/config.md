@@ -1,8 +1,12 @@
 ---
 background_image: /images/人物1.png
 mobile_background_image: /images/人物2.png
-title: 專業翡翠原石買手｜曼德勒直採
-subtitle: 本地匯率優勢｜一物一證｜10年+經驗
+title_lines:
+  - text: 專業翡翠原石買手
+  - text: 曼德勒直採｜10年經驗
+subtitle_lines:
+  - text: 本地匯率優勢
+  - text: 一物一證｜只賺取20%代購費
 cta_text: 立即咨詢
-youtube_url: https://www.youtube.com/watch?v=BC54zCSGL9s
+youtube_url: ""
 ---

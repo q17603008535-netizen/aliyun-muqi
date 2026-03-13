@@ -2,9 +2,10 @@
 interface HeroData {
   background_image?: string;
   mobile_background_image?: string;
-  title?: string;
-  subtitle?: string;
+  title_lines?: { text: string }[];
+  subtitle_lines?: { text: string }[];
   cta_text?: string;
+  youtube_url?: string;
 }
 
 interface ContactItem {
@@ -22,6 +23,19 @@ interface Props {
 }
 
 const { hero = {}, contacts = [] } = Astro.props;
+
+const defaultTitleLines = [
+  { text: '專業翡翠原石買手' },
+  { text: '曼德勒直採｜10年經驗' },
+];
+
+const defaultSubtitleLines = [
+  { text: '本地匯率優勢' },
+  { text: '一物一證｜只賺取20%代購費' },
+];
+
+const titleLines = hero.title_lines?.length ? hero.title_lines : defaultTitleLines;
+const subtitleLines = hero.subtitle_lines?.length ? hero.subtitle_lines : defaultSubtitleLines;
 ---
 
 <section id="hero" class="relative min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 overflow-hidden pt-16 md:pt-0">
@@ -48,11 +62,15 @@ const { hero = {}, contacts = [] } = Astro.props;
     </div>
     
     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight text-left sm:text-center">
-      {hero.title || "專業翡翠原石買手｜曼德勒直採｜10年經驗"}
+      {titleLines.map((line, index) => (
+        <span class="block">{line.text}</span>
+      ))}
     </h1>
     
     <p class="text-lg sm:text-xl text-stone-300 mb-10 max-w-2xl mx-auto text-left sm:text-center">
-      {hero.subtitle || "本地匯率優勢｜一物一證｜只賺取20%代購費"}
+      {subtitleLines.map((line, index) => (
+        <span class="block">{line.text}</span>
+      ))}
     </p>
     
     <div class="flex gap-4 justify-center items-center flex-wrap">
