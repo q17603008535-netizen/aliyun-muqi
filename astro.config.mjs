@@ -3,15 +3,11 @@ import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
-import astroI18next from 'astro-i18next';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://jade-website-v3.vercel.app',
-  integrations: [
-    sitemap(),
-    astroI18next()
-  ],
+  integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
     build: {

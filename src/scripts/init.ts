@@ -1,5 +1,5 @@
 // 客户端初始化脚本
-import { initAutoLocaleSwitch } from '../utils/locale';
+import { initAutoLocaleSwitch } from '../i18n';
 import { initAccessibleModals, initKeyboardNavigation } from '../utils/accessibility';
 
 // 初始化自动语言切换

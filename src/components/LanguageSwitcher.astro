@@ -17,7 +17,7 @@ const languages = [
   <button
     id="language-toggle"
     class="flex items-center gap-2 px-3 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors"
-    aria-label="切换语言"
+    aria-label="切換語言"
     aria-expanded="false"
     aria-haspopup="true"
   >
@@ -37,12 +37,12 @@ const languages = [
     aria-labelledby="language-toggle"
   >
     {languages.map((lang) => (
-      <a
-        href={`/${lang.code === 'zh-TW' ? '' : lang.code}`}
+      <button
+        type="button"
         data-locale={lang.code}
-        class="flex items-center gap-3 px-4 py-2 hover:bg-gray-100 transition-colors cursor-pointer"
+        class="flex items-center gap-3 px-4 py-2 hover:bg-gray-100 transition-colors cursor-pointer w-full text-left"
         role="menuitem"
-        aria-label={`切换到${lang.name}`}
+        aria-label={`切換到${lang.name}`}
       >
         <span class="text-xl">{lang.flag}</span>
         <span class="text-gray-700">{lang.name}</span>
@@ -51,7 +51,7 @@ const languages = [
             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
           </svg>
         )}
-      </a>
+      </button>
     ))}
   </div>
 </div>
@@ -97,12 +97,32 @@ const languages = [
     }
   });
   
-  // 语言切换时保存用户偏好
-  document.querySelectorAll('[data-locale]').forEach(link => {
-    link.addEventListener('click', () => {
-      const locale = (link as HTMLElement).getAttribute('data-locale');
+  // 语言切换功能
+  document.querySelectorAll('[data-locale]').forEach(button => {
+    button.addEventListener('click', () => {
+      const locale = (button as HTMLElement).getAttribute('data-locale');
       if (locale) {
+        // 保存用户偏好
         localStorage.setItem('preferred-locale', locale);
+        
+        // 更新 URL（不刷新页面）
+        const currentPath = window.location.pathname;
+        const pathParts = currentPath.split('/').filter(Boolean);
+        
+        // 移除现有的语言前缀
+        let basePath = currentPath;
+        if (['zh-TW', 'zh-CN', 'en'].includes(pathParts[0])) {
+          basePath = '/' + pathParts.slice(1).join('/');
+        }
+        
+        // 构建新路径
+        let newPath = basePath;
+        if (locale !== 'zh-TW') { // 默认语言不使用前缀
+          newPath = '/' + locale + basePath;
+        }
+        
+        // 更新 URL 并刷新
+        window.location.href = newPath;
       }
     });
   });
