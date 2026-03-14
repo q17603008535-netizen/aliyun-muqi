@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import SEO from '../components/SEO.astro';
+import { Analytics } from '@vercel/analytics/astro';
 
 interface Props {
   title: string;
@@ -72,11 +73,22 @@ const {
       type={type}
       publishedTime={publishedTime}
     />
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EZE1EVCPJR"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-EZE1EVCPJR');
+    </script>
   </head>
   <body class="font-sans antialiased text-gray-800 bg-white">
-    <main id="main-content" tabindex="-1">
-      <slot />
-    </main>
+    <slot />
+    
+    <!-- 国际化初始化脚本 -->
+    <script type="module" src="../scripts/init.ts"></script>
+    <Analytics />
   </body>
 </html>
 
