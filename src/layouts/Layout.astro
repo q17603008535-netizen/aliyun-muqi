@@ -1,7 +1,6 @@
 ---
 import '../styles/global.css';
 import SEO from '../components/SEO.astro';
-import { Analytics } from '@vercel/analytics/astro';
 
 interface Props {
   title: string;
@@ -88,7 +87,6 @@ const {
     
     <!-- 国际化初始化脚本 -->
     <script type="module" src="../scripts/init.ts"></script>
-    <Analytics />
   </body>
 </html>
 
