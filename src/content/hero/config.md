@@ -2,10 +2,10 @@
 background_image: /images/人物1.png
 mobile_background_image: /images/人物2.png
 title_lines:
-  - text: 專業翡翠原石買手
-  - text: 曼德勒直採｜10 年經驗
+  - text: 緬甸翡翠原石壹站式
+  - text: 曼德勒直採｜10 年+經驗
 title_lines_mobile:
-  - text: 專業翡翠原石買手
+  - text: 專業翡翠買手
   - text: 曼德勒直採
 subtitle_lines:
   - text: 為您精選高品質翡翠原石
