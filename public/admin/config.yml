@@ -159,3 +159,13 @@ collections:
       - { name: location, label: 地區, widget: string }
       - { name: content, label: 評價內容, widget: text }
       - { name: rating, label: 評分, widget: number, min: 1, max: 5, default: 5 }
+
+  - name: tracking_codes
+    label: 追蹤代碼管理
+    folder: src/content/tracking_codes
+    create: false
+    slug: "config"
+    fields:
+      - { name: head_scripts, label: "Head 代碼（<head>）", widget: text, hint: "放置在<head>标签内，例如：Google Analytics、Google Ads 轉化追蹤等代碼" }
+      - { name: body_scripts, label: "Body 代碼（<body>）", widget: text, hint: "放置在<body>标签内，例如：Pixel 初始化代碼等" }
+      - { name: foot_scripts, label: "底部代碼（</body> 前）", widget: text, hint: "放置在</body>标签前，例如：客服聊天工具、推薦引擎等代碼" }

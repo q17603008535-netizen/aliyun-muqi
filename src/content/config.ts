@@ -149,6 +149,15 @@ const testimonials = defineCollection({
   }),
 });
 
+const tracking_codes = defineCollection({
+  type: 'content',
+  schema: z.object({
+    head_scripts: z.string().optional(),
+    body_scripts: z.string().optional(),
+    foot_scripts: z.string().optional(),
+  }),
+});
+
 export const collections = {
   settings,
   products,
@@ -159,4 +168,5 @@ export const collections = {
   why_us,
   contact,
   testimonials,
+  tracking_codes,
 };

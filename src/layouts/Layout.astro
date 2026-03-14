@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import SEO from '../components/SEO.astro';
+import { getCollection } from 'astro:content';
 
 interface Props {
   title: string;
@@ -19,6 +20,12 @@ const {
   type = 'website',
   publishedTime
 } = Astro.props;
+
+// 获取追踪代码配置
+const trackingCodes = (await getCollection('tracking_codes')).find(c => c.id === 'config');
+const headScripts = trackingCodes?.data.head_scripts || '';
+const bodyScripts = trackingCodes?.data.body_scripts || '';
+const footScripts = trackingCodes?.data.foot_scripts || '';
 ---
 
 <!-- 跳过链接 - 无障碍功能 -->
@@ -73,17 +80,17 @@ const {
       publishedTime={publishedTime}
     />
     
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EZE1EVCPJR"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-EZE1EVCPJR');
-    </script>
+    <!-- 追踪代码注入（Head） -->
+    {headScripts && <script set:html={headScripts} />}
   </head>
   <body class="font-sans antialiased text-gray-800 bg-white">
+    <!-- 追踪代码注入（Body） -->
+    {bodyScripts && <script set:html={bodyScripts} />}
+    
     <slot />
+    
+    <!-- 追踪代码注入（Foot） -->
+    {footScripts && <script set:html={footScripts} />}
   </body>
 </html>
 
