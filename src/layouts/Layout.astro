@@ -21,6 +21,11 @@ const {
 } = Astro.props;
 ---
 
+<!-- 跳过链接 - 无障碍功能 -->
+<a href="#main-content" class="skip-link">
+  跳转到主要内容
+</a>
+
 <!doctype html>
 <html lang="zh-TW">
   <head>
@@ -69,7 +74,9 @@ const {
     />
   </head>
   <body class="font-sans antialiased text-gray-800 bg-white">
-    <slot />
+    <main id="main-content" tabindex="-1">
+      <slot />
+    </main>
   </body>
 </html>
 
@@ -79,5 +86,23 @@ const {
   }
   body {
     font-family: 'Noto Sans TC', sans-serif;
+  }
+  
+  /* 跳过链接样式 - 无障碍功能 */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #1a5f4a;
+    color: white;
+    padding: 8px 16px;
+    z-index: 100;
+    transition: top 0.3s;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .skip-link:focus {
+    top: 0;
   }
 </style>

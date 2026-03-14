@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import LanguageSwitcher from './LanguageSwitcher.astro';
 
 interface SettingsData {
   logo?: string;
@@ -11,6 +12,11 @@ interface Props {
 }
 
 const { settings = {} } = Astro.props;
+
+// 获取当前语言
+const currentLocale = Astro.url?.pathname.split('/')[1] || 'zh-TW';
+const validLocales = ['zh-TW', 'zh-CN', 'en'];
+const locale = validLocales.includes(currentLocale) ? currentLocale : 'zh-TW';
 
 const navLinks = [
   { href: "#about", label: "關於我們" },
@@ -57,6 +63,8 @@ const navLinks = [
       </nav>
       
       <div class="flex items-center gap-4">
+        <LanguageSwitcher currentLocale={locale} />
+        
         <a href="#contact" class="hidden sm:inline-flex items-center px-4 py-2 bg-primary text-white text-sm font-medium rounded-lg btn-hover">
           立即咨詢
         </a>

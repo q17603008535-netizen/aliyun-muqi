@@ -1,0 +1,115 @@
+---
+// 语言切换器组件
+interface Props {
+  currentLocale: string;
+}
+
+const { currentLocale = 'zh-TW' } = Astro.props;
+
+const languages = [
+  { code: 'zh-TW', name: '繁體中文', flag: '🇹🇼' },
+  { code: 'zh-CN', name: '简体中文', flag: '🇨🇳' },
+  { code: 'en', name: 'English', flag: '🇺🇸' },
+];
+---
+
+<div class="language-switcher relative">
+  <button
+    id="language-toggle"
+    class="flex items-center gap-2 px-3 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors"
+    aria-label="切换语言"
+    aria-expanded="false"
+    aria-haspopup="true"
+  >
+    <span class="text-lg">{languages.find(l => l.code === currentLocale)?.flag}</span>
+    <span class="text-sm text-white hidden sm:inline">
+      {languages.find(l => l.code === currentLocale)?.name}
+    </span>
+    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+  
+  <div
+    id="language-dropdown"
+    class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 hidden z-50"
+    role="menu"
+    aria-labelledby="language-toggle"
+  >
+    {languages.map((lang) => (
+      <a
+        href={`/${lang.code === 'zh-TW' ? '' : lang.code}`}
+        data-locale={lang.code}
+        class="flex items-center gap-3 px-4 py-2 hover:bg-gray-100 transition-colors cursor-pointer"
+        role="menuitem"
+        aria-label={`切换到${lang.name}`}
+      >
+        <span class="text-xl">{lang.flag}</span>
+        <span class="text-gray-700">{lang.name}</span>
+        {lang.code === currentLocale && (
+          <svg class="w-5 h-5 text-primary ml-auto" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg>
+        )}
+      </a>
+    ))}
+  </div>
+</div>
+
+<script>
+  const toggle = document.getElementById('language-toggle');
+  const dropdown = document.getElementById('language-dropdown');
+  
+  function openDropdown() {
+    dropdown?.classList.remove('hidden');
+    toggle?.setAttribute('aria-expanded', 'true');
+  }
+  
+  function closeDropdown() {
+    dropdown?.classList.add('hidden');
+    toggle?.setAttribute('aria-expanded', 'false');
+  }
+  
+  toggle?.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (dropdown?.classList.contains('hidden')) {
+      openDropdown();
+    } else {
+      closeDropdown();
+    }
+  });
+  
+  // 点击外部关闭
+  document.addEventListener('click', (e) => {
+    if (toggle && !toggle.contains(e.target as Node) && dropdown && !dropdown.contains(e.target as Node)) {
+      closeDropdown();
+    }
+  });
+  
+  // 键盘导航
+  toggle?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openDropdown();
+    }
+    if (e.key === 'Escape') {
+      closeDropdown();
+    }
+  });
+  
+  // 语言切换时保存用户偏好
+  document.querySelectorAll('[data-locale]').forEach(link => {
+    link.addEventListener('click', () => {
+      const locale = (link as HTMLElement).getAttribute('data-locale');
+      if (locale) {
+        localStorage.setItem('preferred-locale', locale);
+      }
+    });
+  });
+</script>
+
+<style>
+  .language-switcher:hover #language-dropdown {
+    display: block;
+  }
+</style>

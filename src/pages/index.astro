@@ -45,7 +45,7 @@ const settingsData = await getCollection('settings');
 const settings = settingsData[0]?.data || {};
 ---
 
-<Layout title="翡翠原石代購｜曼德勒專業買手｜10年經驗">
+<Layout title="翡翠原石代購｜曼德勒專業買手｜10 年經驗">
   <Navbar settings={settings} />
   
   <main>
@@ -96,5 +96,150 @@ const settings = settingsData[0]?.data || {};
     });
   } else {
     setTimeout(initFadeInAnimations, 100);
+  }
+</script>
+
+<script hoist>
+  // 无障碍访问初始化
+  function initAccessibility() {
+    // 模态框管理
+    const modal = document.getElementById('contact-modal');
+    const modalBtn = document.getElementById('contact-modal-btn');
+    const closeBtn = document.querySelector('.close-modal-btn');
+    const overlay = document.querySelector('.modal-overlay');
+    
+    if (modal && modalBtn && closeBtn) {
+      let previousActiveElement = null as HTMLElement | null;
+      
+      function openModal() {
+        previousActiveElement = document.activeElement as HTMLElement;
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        modal.setAttribute('aria-hidden', 'false');
+        
+        // 聚焦到第一个可聚焦元素
+        const firstFocusable = modal.querySelector<HTMLElement>('button, [href], input');
+        firstFocusable?.focus();
+        
+        // 焦点陷阱
+        modal.addEventListener('keydown', handleFocusTrap);
+      }
+      
+      function closeModal() {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+        modal.setAttribute('aria-hidden', 'true');
+        previousActiveElement?.focus();
+        modal.removeEventListener('keydown', handleFocusTrap);
+      }
+      
+      function handleFocusTrap(e: KeyboardEvent) {
+        if (e.key !== 'Tab') return;
+        
+        const focusableElements = modal.querySelectorAll<HTMLElement>(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        const first = focusableElements[0];
+        const last = focusableElements[focusableElements.length - 1];
+        
+        if (e.shiftKey && document.activeElement === first) {
+          last.focus();
+          e.preventDefault();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          first.focus();
+          e.preventDefault();
+        }
+      }
+      
+      modalBtn.addEventListener('click', openModal);
+      closeBtn.addEventListener('click', closeModal);
+      overlay?.addEventListener('click', closeModal);
+      
+      // Escape 键关闭
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+          closeModal();
+        }
+      });
+    }
+    
+    // 产品联系模态框
+    const productModal = document.getElementById('product-contact-modal');
+    const productBtns = document.querySelectorAll('.product-contact-btn');
+    const productClose = document.querySelector('.product-modal-close');
+    const productOverlay = document.querySelector('.product-modal-overlay');
+    
+    if (productModal && productClose) {
+      let previousActiveElement = null as HTMLElement | null;
+      
+      function openProductModal() {
+        previousActiveElement = document.activeElement as HTMLElement;
+        productModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        productModal.setAttribute('aria-hidden', 'false');
+        
+        const firstFocusable = productModal.querySelector<HTMLElement>('button, [href], input');
+        firstFocusable?.focus();
+        
+        productModal.addEventListener('keydown', handleProductFocusTrap);
+      }
+      
+      function closeProductModal() {
+        productModal.classList.add('hidden');
+        document.body.style.overflow = '';
+        productModal.setAttribute('aria-hidden', 'true');
+        previousActiveElement?.focus();
+        productModal.removeEventListener('keydown', handleProductFocusTrap);
+      }
+      
+      function handleProductFocusTrap(e: KeyboardEvent) {
+        if (e.key !== 'Tab') return;
+        
+        const focusableElements = productModal.querySelectorAll<HTMLElement>(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        const first = focusableElements[0];
+        const last = focusableElements[focusableElements.length - 1];
+        
+        if (e.shiftKey && document.activeElement === first) {
+          last.focus();
+          e.preventDefault();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          first.focus();
+          e.preventDefault();
+        }
+      }
+      
+      productBtns.forEach(btn => {
+        btn.addEventListener('click', openProductModal);
+      });
+      
+      productClose.addEventListener('click', closeProductModal);
+      productOverlay?.addEventListener('click', closeProductModal);
+      
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !productModal.classList.contains('hidden')) {
+          closeProductModal();
+        }
+      });
+    }
+    
+    // 键盘导航增强
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        const target = e.target as HTMLElement;
+        if (target.tagName === 'BUTTON' || target.getAttribute('role') === 'button') {
+          e.preventDefault();
+          target.click();
+        }
+      }
+    });
+  }
+  
+  // DOM 加载完成后初始化
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAccessibility);
+  } else {
+    initAccessibility();
   }
 </script>
