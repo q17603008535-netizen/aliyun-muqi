@@ -22,3 +22,13 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# temporary reports (Chinese)
+开发完成报告.md
+开发进度对比报告.md
+未开发功能清单.md
+语言切换器优化报告.md
+部署错误修复报告.md
+项目完成情况汇报_*.md
+项目分析报告_v3.md
+check_page.py
