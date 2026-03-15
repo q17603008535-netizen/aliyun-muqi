@@ -22,7 +22,8 @@ const {
 } = Astro.props;
 
 // 获取追踪代码配置
-const trackingCodes = (await getCollection('tracking_codes')).find(c => c.id === 'config');
+const trackingCodesCollection = await getCollection('tracking_codes');
+const trackingCodes = trackingCodesCollection.find(c => c.id === 'config' || c.slug === 'config');
 const headScripts = trackingCodes?.data.head_scripts || '';
 const bodyScripts = trackingCodes?.data.body_scripts || '';
 const footScripts = trackingCodes?.data.foot_scripts || '';
