@@ -166,6 +166,6 @@ collections:
     create: false
     slug: "config"
     fields:
-      - { name: head_scripts, label: "Head 代碼（<head>）", widget: code, default: "", required: false, hint: "放置在<head>标签内，例如：Google Analytics、Google Ads 轉化追蹤等代碼" }
-      - { name: body_scripts, label: "Body 代碼（<body>）", widget: code, default: "", required: false, hint: "放置在<body>标签内，例如：Pixel 初始化代碼等" }
-      - { name: foot_scripts, label: "底部代碼（</body> 前）", widget: code, default: "", required: false, hint: "放置在</body>标签前，例如：客服聊天工具、推薦引擎等代碼" }
+      - { name: head_scripts, label: "Head 代碼（<head>）", widget: text, default: "", required: false, hint: "放置在<head>标签内，例如：Google Analytics、Google Ads 轉化追蹤等代碼" }
+      - { name: body_scripts, label: "Body 代碼（<body>）", widget: text, default: "", required: false, hint: "放置在<body>标签内，例如：Pixel 初始化代碼等" }
+      - { name: foot_scripts, label: "底部代碼（</body> 前）", widget: text, default: "", required: false, hint: "放置在</body>标签前，例如：客服聊天工具、推薦引擎等代碼" }
