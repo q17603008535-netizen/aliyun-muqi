@@ -19,8 +19,8 @@ const {
   author = '洛天翡翠'
 } = Astro.props;
 
-const siteUrl = 'https://jade-website-v3.vercel.app';
-const imageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
+const siteUrl = 'https://www.ltmdfc.top';
+const imageUrl = image && image.startsWith('http') ? image : `${siteUrl}${image || '/images/单独 LOGO.png'}`;
 ---
 
 <!-- Primary Meta Tags -->
@@ -54,35 +54,28 @@ const imageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
 <meta name="revisit-after" content="7 days" />
 
 <!-- Structured Data - Organization -->
-<script type="application/ld+json">
-{
+<script type="application/ld+json" set:html={`{
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "洛天翡翠",
   "alternateName": "翡翠原石代購",
-  "url": siteUrl,
-  "logo": `${siteUrl}/images/单独 LOGO.png`,
+  "url": "${siteUrl}",
+  "logo": "${siteUrl}/images/单独 LOGO.png",
+  "image": "${siteUrl}/images/单独 LOGO.png",
   "description": "專業翡翠原石買手，位於曼德勒，擁有 10 年經驗，提供高品質翡翠原石代購服務",
   "contactPoint": {
     "@type": "ContactPoint",
     "contactType": "customer service",
     "availableLanguage": ["Chinese", "English"]
-  },
-  "sameAs": [
-    "https://instagram.com",
-    "https://youtube.com",
-    "https://facebook.com"
-  ]
-}
-</script>
+  }
+}`} />
 
 <!-- Structured Data - Local Business -->
-<script type="application/ld+json">
-{
+<script type="application/ld+json" set:html={`{
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "洛天翡翠",
-  "image": `${siteUrl}/images/单独 LOGO.png`,
+  "image": "${siteUrl}/images/单独 LOGO.png",
   "description": "專業翡翠原石買手，位於曼德勒，擁有 10 年經驗",
   "priceRange": "$$$",
   "address": {
@@ -95,68 +88,57 @@ const imageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
     "latitude": "21.9588",
     "longitude": "96.0891"
   },
-  "url": siteUrl,
-  "telephone": "+95-XXX-XXXXXXX",
+  "url": "${siteUrl}",
   "openingHoursSpecification": {
     "@type": "OpeningHoursSpecification",
     "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
     "opens": "09:00",
     "closes": "18:00"
-  },
-  "sameAs": [
-    "https://instagram.com",
-    "https://youtube.com",
-    "https://facebook.com"
-  ]
-}
-</script>
+  }
+}`} />
 
 <!-- Structured Data - Product (for product pages) -->
 {type === 'product' && (
-  <script type="application/ld+json">
-  {
+  <script type="application/ld+json" set:html={`{
     "@context": "https://schema.org",
     "@type": "Product",
-    "name": title,
-    "description": description,
-    "image": imageUrl,
+    "name": "${title}",
+    "description": "${description}",
+    "image": "${imageUrl}",
     "brand": {
       "@type": "Brand",
       "name": "洛天翡翠"
     },
     "offers": {
       "@type": "Offer",
-      "url": Astro.url,
+      "url": "${Astro.url}",
       "priceCurrency": "USD",
+      "price": "0",
       "availability": "https://schema.org/InStock",
       "seller": {
         "@type": "Organization",
         "name": "洛天翡翠"
       }
     }
-  }
-  </script>
+  }`} />
 )}
 
 <!-- Structured Data - WebSite -->
-<script type="application/ld+json">
-{
+<script type="application/ld+json" set:html={`{
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "洛天翡翠 - 翡翠原石代購",
   "alternateName": "Jade Stone Purchase",
-  "url": siteUrl,
+  "url": "${siteUrl}",
   "potentialAction": {
     "@type": "SearchAction",
-    "target": `${siteUrl}/search?q={search_term_string}`,
+    "target": "${siteUrl}/search?q={search_term_string}",
     "query-input": "required name=search_term_string"
   }
-}
-</script>
+}`} />
 
 <!-- Structured Data - BreadcrumbList -->
-<script type="application/ld+json">
-{
+<script type="application/ld+json" set:html={`{
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
@@ -164,8 +146,7 @@ const imageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
       "@type": "ListItem",
       "position": 1,
       "name": "首頁",
-      "item": siteUrl
+      "item": "${siteUrl}"
     }
   ]
-}
-</script>
+}`} />
