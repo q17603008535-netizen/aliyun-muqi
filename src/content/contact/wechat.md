@@ -1,6 +1,6 @@
 ---
 type: 微信
-value: ltfc500
+value: ltfc10
 label: wechat
 icon: wechat
 visible: true
