@@ -13,5 +13,5 @@ subtitle_lines_mobile:
   - text: 為您精選高品質翡翠原石
 cta_text: 立即咨詢
 badge_text: 緬甸翡翠原石專業代購
-youtube_url: ''
+youtube_url: https://www.youtube.com/watch?v=BC54zCSGL9s
 ---
