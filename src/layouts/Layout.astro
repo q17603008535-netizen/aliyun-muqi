@@ -41,8 +41,35 @@ const footScripts = trackingCodes?.data.foot_scripts || '';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    
+    <!-- CDN 预连接优化 -->
+    <link rel="dns-prefetch" href="//vercel-dns.com" />
+    <link rel="preconnect" href="https://vercel-dns.com" />
+    
+    <!-- 图片预加载 - 首屏关键资源 -->
+    <link 
+      rel="preload" 
+      as="image" 
+      href="/images/人物 2.png"
+      media="(max-width: 768px)"
+      fetchpriority="high"
+    />
+    <link 
+      rel="preload" 
+      as="image" 
+      href="/images/人物 1.png"
+      media="(min-width: 769px)"
+      fetchpriority="high"
+    />
+    
+    <!-- Google Fonts 预加载和字体优化 -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link 
+      rel="preload" 
+      as="style" 
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" 
+    />
     <link 
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" 
       rel="stylesheet" 
