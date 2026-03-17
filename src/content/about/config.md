@@ -1,5 +1,5 @@
 ---
-experience_image: /images/整合LOGO.png
+experience_image: /images/整合LOGO-1.png
 experience_text: 10年+
 title: 專業翡翠原石買手
 description: 我是洛天，一名專業的翡翠原始買手，多年在中緬邊境曼德勒翡翠原石交易市場做生意，現場直播翡翠原石，匯率公開價格透明
