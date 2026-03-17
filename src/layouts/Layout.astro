@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import SEO from '../components/SEO.astro';
 import { getCollection } from 'astro:content';
+import SpeedInsights from "@vercel/speed-insights/astro";
 
 interface Props {
   title: string;
@@ -110,6 +111,9 @@ const footScripts = trackingCodes?.data.foot_scripts || '';
     
     <!-- 追踪代码注入（Head） -->
     {headScripts && <script set:html={headScripts} />}
+    
+    <!-- Vercel Speed Insights - 性能监控 -->
+    <SpeedInsights />
   </head>
   <body class="font-sans antialiased text-gray-800 bg-white">
     <!-- 追踪代码注入（Body） -->
