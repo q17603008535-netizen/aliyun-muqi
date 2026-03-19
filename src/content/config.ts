@@ -158,6 +158,25 @@ const tracking_codes = defineCollection({
   }),
 });
 
+const knowledge = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    publishDate: z.date(),
+    category: z.enum([
+      '场口解析',
+      '选购技巧',
+      '避坑指南',
+      '玉石文化'
+    ]),
+    tags: z.array(z.string()),
+    image: z.string().optional(),
+    featured: z.boolean().default(false),
+    order: z.number().default(0),
+  }),
+});
+
 export const collections = {
   settings,
   products,
@@ -169,4 +188,5 @@ export const collections = {
   contact,
   testimonials,
   tracking_codes,
+  knowledge,
 };
