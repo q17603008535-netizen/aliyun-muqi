@@ -1,0 +1,53 @@
+---
+interface Props {
+  currentPage?: 'list' | 'detail';
+  prevSlug?: string;
+  nextSlug?: string;
+}
+
+const { currentPage = 'list', prevSlug, nextSlug } = Astro.props;
+---
+
+<nav class="flex items-center justify-between py-4 border-b border-gray-200 mb-6">
+  <!-- 返回总科普页 -->
+  <a
+    href="/knowledge/"
+    class="inline-flex items-center text-primary hover:underline"
+  >
+    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+    </svg>
+    返回总科普页
+  </a>
+  
+  <!-- 上一篇/下一篇 -->
+  {currentPage === 'detail' && (
+    <div class="flex gap-4">
+      {prevSlug && (
+        <a
+          href={`/knowledge/${prevSlug}/`}
+          class="text-gray-600 hover:text-primary"
+        >
+          ← 上一篇
+        </a>
+      )}
+      
+      {nextSlug && (
+        <a
+          href={`/knowledge/${nextSlug}/`}
+          class="text-gray-600 hover:text-primary"
+        >
+          下一篇 →
+        </a>
+      )}
+    </div>
+  )}
+  
+  <!-- 分享按钮 -->
+  <button
+    onclick="navigator.share({ title: document.title, url: window.location.href })"
+    class="text-gray-600 hover:text-primary"
+  >
+    分享
+  </button>
+</nav>
