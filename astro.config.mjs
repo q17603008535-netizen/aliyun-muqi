@@ -25,7 +25,10 @@ export default defineConfig({
   // 图片优化配置
   image: {
     service: {
-      entrypoint: 'astro/assets/services/sharp'
+      entrypoint: 'astro/assets/services/sharp',
+      config: {
+        limitInputPixels: false // 允许处理大图
+      }
     }
   }
 });
