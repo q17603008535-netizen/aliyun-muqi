@@ -1,0 +1,59 @@
+---
+import { getCollection } from 'astro:content';
+import KnowledgeCard from './KnowledgeCard.astro';
+
+// 获取 3 篇精选文章
+const featuredArticles = await getCollection('knowledge', ({ data }) => {
+  return data.featured === true;
+});
+
+// 按 order 排序，取前 3 篇
+featuredArticles.sort((a, b) => {
+  if (a.data.order !== b.data.order) {
+    return a.data.order - b.data.order;
+  }
+  return new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime();
+});
+
+const displayArticles = featuredArticles.slice(0, 3);
+---
+
+<section class="bg-stone-50 py-12">
+  <div class="container mx-auto px-4">
+    <!-- 标题栏 -->
+    <div class="flex justify-between items-center mb-8">
+      <div>
+        <h2 class="text-3xl font-bold text-gray-900 mb-2">
+          翡翠原石科普知识
+        </h2>
+        <p class="text-gray-600">
+          了解缅甸翡翠原石选购技巧
+        </p>
+      </div>
+      
+      <a
+        href="/knowledge/"
+        class="inline-flex items-center text-primary font-medium hover:underline"
+      >
+        浏览全部
+        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+    
+    <!-- 文章卡片 -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {displayArticles.map((article) => (
+        <KnowledgeCard
+          title={article.data.title}
+          description={article.data.description}
+          slug={article.id}
+          image={article.data.image}
+          category={article.data.category}
+          publishDate={article.data.publishDate}
+        />
+      ))}
+    </div>
+  </div>
+</section>
