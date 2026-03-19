@@ -13,7 +13,7 @@ allArticles.sort((a, b) => {
   return new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime();
 });
 
-const currentIndex = allArticles.findIndex(a => a.id === slug);
+const currentIndex = allArticles.findIndex(a => a.slug === slug);
 const prevArticle = currentIndex > 0 ? allArticles[currentIndex - 1] : null;
 const nextArticle = currentIndex < allArticles.length - 1 ? allArticles[currentIndex + 1] : null;
 
@@ -126,7 +126,7 @@ export async function getStaticPaths() {
           event: 'copy_wechat',
           timestamp: new Date().toISOString(),
           source: window.location.pathname,
-          article: '{article.data.title}'
+          article: `${article.data.title}`
         });
         
         alert('微信号已复制，请在微信中搜索添加！');
