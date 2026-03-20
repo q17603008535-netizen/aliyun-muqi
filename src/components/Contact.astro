@@ -213,31 +213,37 @@ const { contacts = [] } = Astro.props;
         });
         
         if (response.ok) {
-          // 成功
-          formStatus.textContent = '✅ 感謝您的咨詢！我們將盡快與您聯繫。';
-          formStatus.className = 'p-4 bg-green-100 text-green-700 rounded-lg text-center font-medium';
-          formStatus.classList.remove('hidden');
-          form.reset();
+          // 成功 - 跳转到感谢页面
+          window.location.href = '/thank-you';
         } else {
-          // 失败
+          // 失败 - 显示错误提示
           formStatus.textContent = '❌ 提交失敗，請稍後再試。';
           formStatus.className = 'p-4 bg-red-100 text-red-700 rounded-lg text-center font-medium';
           formStatus.classList.remove('hidden');
+          
+          // 恢复按钮
+          submitButton.disabled = false;
+          submitButton.textContent = originalText;
+          submitButton.classList.remove('opacity-50', 'cursor-not-allowed');
+          
+          // 3秒后隐藏提示
+          setTimeout(() => {
+            formStatus.classList.add('hidden');
+          }, 3000);
         }
       } catch (error) {
         // 网络错误
         formStatus.textContent = '❌ 網絡錯誤，請檢查網絡連接。';
         formStatus.className = 'p-4 bg-red-100 text-red-700 rounded-lg text-center font-medium';
         formStatus.classList.remove('hidden');
-      } finally {
+        
         // 恢复按钮
         submitButton.disabled = false;
         submitButton.textContent = originalText;
         submitButton.classList.remove('opacity-50', 'cursor-not-allowed');
         
-        // 3 秒后清除提示
+        // 3秒后隐藏提示
         setTimeout(() => {
-          formStatus.textContent = '';
           formStatus.classList.add('hidden');
         }, 3000);
       }
