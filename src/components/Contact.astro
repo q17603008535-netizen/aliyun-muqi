@@ -89,6 +89,12 @@ const { contacts = [] } = Astro.props;
       <div>
         <h3 class="text-xl font-semibold text-gray-900 mb-6">聯繫方式</h3>
         
+        <!-- 商家名称醒目展示 -->
+        <div class="bg-gradient-to-r from-primary/10 to-secondary/10 border-2 border-primary/30 rounded-xl p-6 mb-6 text-center">
+          <p class="text-3xl font-bold text-primary mb-1">洛天翡翠</p>
+          <p class="text-sm text-gray-600">曼德勒翡翠原石專業代購</p>
+        </div>
+        
         <div class="space-y-4">
           {contacts.length > 0 ? (
             contacts.map((contact) => (
