@@ -97,8 +97,8 @@ const { contacts = [] } = Astro.props;
         
         <div class="space-y-4 flex-1">
           {contacts.length > 0 ? (
-            contacts.map((contact) => (
-              <div class="bg-white p-5 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            contacts.map((contact, index) => (
+              <div class="bg-white p-5 rounded-xl shadow-sm hover:shadow-md transition-shadow" data-contact-type={contact.type}>
                 <div class="flex items-start gap-3">
                   <div class="flex-shrink-0 w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center" aria-hidden="true">
                     {contact.type === '微信' && (
@@ -132,6 +132,16 @@ const { contacts = [] } = Astro.props;
                     <h4 class="font-medium text-gray-900 mb-0.5 text-sm">{contact.type}</h4>
                     <p class="text-gray-600 text-sm">{contact.value}</p>
                   </div>
+                  {(contact.type === '微信' || contact.type === 'LINE') && (
+                    <button
+                      type="button"
+                      class="copy-btn text-primary hover:text-primary-dark text-xs font-medium transition-colors"
+                      data-copy-value={contact.value}
+                      aria-label={`複製${contact.type}`}
+                    >
+                      點擊複製
+                    </button>
+                  )}
                 </div>
               </div>
             ))
@@ -140,6 +150,21 @@ const { contacts = [] } = Astro.props;
               <p class="text-gray-500 text-center text-sm">請在後台添加聯繫方式</p>
             </div>
           )}
+          
+          <!-- 固定企业邮箱 -->
+          <div class="bg-white p-5 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-start gap-3">
+              <div class="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center" aria-hidden="true">
+                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+              </div>
+              <div class="flex-1">
+                <h4 class="font-medium text-gray-900 mb-0.5 text-sm">企業郵箱</h4>
+                <p class="text-gray-600 text-sm">pharo2982@gmail.com</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -147,6 +172,7 @@ const { contacts = [] } = Astro.props;
 </section>
 
 <script>
+  // 表单提交逻辑
   const form = document.getElementById('contact-form');
   const formStatus = document.getElementById('form-status');
   
@@ -210,4 +236,42 @@ const { contacts = [] } = Astro.props;
       }
     });
   }
+
+  // 复制功能逻辑（仅用于微信和LINE）
+  const copyButtons = document.querySelectorAll('.copy-btn');
+  
+  copyButtons.forEach(button => {
+    button.addEventListener('click', async () => {
+      const textToCopy = button.getAttribute('data-copy-value');
+      
+      try {
+        await navigator.clipboard.writeText(textToCopy);
+        
+        // 保存原始文本
+        const originalText = button.textContent;
+        
+        // 显示复制成功
+        button.textContent = '已複製 ✓';
+        button.classList.add('text-green-600');
+        
+        // 2秒后恢复
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.classList.remove('text-green-600');
+        }, 2000);
+      } catch (err) {
+        console.error('複製失敗:', err);
+        
+        // 显示复制失败
+        const originalText = button.textContent;
+        button.textContent = '複製失敗';
+        button.classList.add('text-red-600');
+        
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.classList.remove('text-red-600');
+        }, 2000);
+      }
+    });
+  });
 </script>
