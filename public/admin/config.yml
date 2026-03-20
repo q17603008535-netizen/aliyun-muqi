@@ -8,11 +8,6 @@ public_folder: /images
 
 local_backend: false
 
-i18n:
-  structure: single_file
-  locales: [zh-TW]
-  default_locale: zh-TW
-
 collections:
   - name: settings
     label: 網站設置

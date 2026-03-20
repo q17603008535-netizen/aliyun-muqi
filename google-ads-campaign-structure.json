@@ -1,0 +1,502 @@
+{
+  "campaignStructure": {
+    "campaign": {
+      "name": "翡翠定制 - 搜索 - 全球华语区 - 2026Q2",
+      "type": "SEARCH",
+      "goals": ["LEAD_GENERATION", "WEBSITE_TRAFFIC"],
+      "status": "ENABLED",
+      "settings": {
+        "budget": {
+          "amount": 1000,
+          "currency": "CNY",
+          "deliveryMethod": "STANDARD"
+        },
+        "bidding": {
+          "strategy": "MAXIMIZE_CLICKS",
+          "initialStrategy": "MAXIMIZE_CLICKS",
+          "optimizationStrategy": "TARGET_CPA",
+          "targetCpa": {
+            "amount": 65,
+            "currency": "CNY"
+          },
+          "phaseStrategy": {
+            "phase1": {
+              "days": "1-7",
+              "strategy": "MAXIMIZE_CLICKS",
+              "goal": "积累 15-20 个转化"
+            },
+            "phase2": {
+              "days": "8-21",
+              "strategy": "TARGET_CPA",
+              "targetCpa": "50-80 CNY"
+            },
+            "phase3": {
+              "days": "22-30",
+              "strategy": "TARGET_CPA_OR_TROAS",
+              "targetCpa": "60-100 CNY"
+            }
+          }
+        },
+        "networks": {
+          "searchNetwork": true,
+          "searchPartners": false,
+          "displayNetwork": false
+        },
+        "locations": [
+          {
+            "name": "台湾",
+            "code": "TW",
+            "bidAdjustment": 0
+          },
+          {
+            "name": "香港",
+            "code": "HK",
+            "bidAdjustment": 0
+          },
+          {
+            "name": "澳门",
+            "code": "MO",
+            "bidAdjustment": 0
+          },
+          {
+            "name": "新加坡",
+            "code": "SG",
+            "bidAdjustment": 0
+          },
+          {
+            "name": "美国",
+            "code": "US",
+            "bidAdjustment": 0
+          },
+          {
+            "name": "加拿大",
+            "code": "CA",
+            "bidAdjustment": 0
+          }
+        ],
+        "languages": [
+          "zh-CN",
+          "zh-TW",
+          "en"
+        ],
+        "urlOptions": {
+          "trackingTemplate": "{lpurl}?utm_source=google&utm_medium=cpc&utm_campaign={campaignid}&utm_content={adgroupid}",
+          "finalUrlExpansion": false
+        }
+      }
+    },
+    "adGroups": [
+      {
+        "id": "AG001",
+        "name": "翡翠原石 - 台湾",
+        "status": "ENABLED",
+        "budgetAllocation": "20%",
+        "dailyBudget": 200,
+        "targeting": {
+          "location": "台湾",
+          "age": ["35-44", "45-54", "55-64"],
+          "gender": ["MALE", "FEMALE"],
+          "genderBidAdjustment": {
+            "MALE": 30,
+            "FEMALE": -30
+          }
+        },
+        "keywords": {
+          "exact": [
+            "[翡翠原石 台湾]",
+            "[缅甸翡翠 定制]",
+            "[翡翠代购 推荐]",
+            "[翡翠原石 价格]",
+            "[台湾翡翠定制]"
+          ],
+          "phrase": [
+            "\"翡翠原石定制戒指\"",
+            "\"台湾翡翠吊坠定制\"",
+            "\"缅甸翡翠原石价格\"",
+            "\"翡翠手镯定制台湾\"",
+            "\"高端翡翠定制服务\""
+          ],
+          "broad": [
+            "+翡翠 +原石 +定制",
+            "+缅甸 +翡翠 +台湾",
+            "+翡翠 +代购 +推荐"
+          ]
+        },
+        "negativeKeywords": [
+          "香港",
+          "澳门",
+          "新加坡",
+          "美国",
+          "加拿大",
+          "免费",
+          "便宜",
+          "批发"
+        ]
+      },
+      {
+        "id": "AG002",
+        "name": "翡翠原石 - 香港",
+        "status": "ENABLED",
+        "budgetAllocation": "15%",
+        "dailyBudget": 150,
+        "targeting": {
+          "location": "香港",
+          "age": ["35-44", "45-54", "55-64"],
+          "gender": ["MALE", "FEMALE"],
+          "genderBidAdjustment": {
+            "MALE": 30,
+            "FEMALE": -30
+          }
+        },
+        "keywords": {
+          "exact": [
+            "[翡翠原石 香港]",
+            "[缅甸翡翠 香港定制]",
+            "[翡翠手镯 香港]",
+            "[香港翡翠定制]",
+            "[翡翠原石价格 香港]"
+          ],
+          "phrase": [
+            "\"翡翠原石定制香港\"",
+            "\"香港翡翠吊坠定制\"",
+            "\"缅甸翡翠香港代购\"",
+            "\"香港翡翠手镯定制\"",
+            "\"高端翡翠香港\""
+          ],
+          "broad": [
+            "+翡翠 +原石 +香港",
+            "+缅甸 +翡翠 +香港",
+            "+翡翠 +定制 +香港"
+          ]
+        },
+        "negativeKeywords": [
+          "台湾",
+          "澳门",
+          "新加坡",
+          "美国",
+          "加拿大",
+          "免费",
+          "便宜",
+          "批发"
+        ]
+      },
+      {
+        "id": "AG003",
+        "name": "翡翠原石 - 澳门",
+        "status": "ENABLED",
+        "budgetAllocation": "10%",
+        "dailyBudget": 100,
+        "targeting": {
+          "location": "澳门",
+          "age": ["35-44", "45-54", "55-64"],
+          "gender": ["MALE", "FEMALE"],
+          "genderBidAdjustment": {
+            "MALE": 30,
+            "FEMALE": -30
+          }
+        },
+        "keywords": {
+          "exact": [
+            "[翡翠原石 澳门]",
+            "[翡翠定制 澳门]",
+            "[澳门翡翠定制]",
+            "[翡翠原石价格 澳门]"
+          ],
+          "phrase": [
+            "\"澳门翡翠原石定制\"",
+            "\"澳门翡翠吊坠定制\"",
+            "\"澳门翡翠手镯定制\"",
+            "\"缅甸翡翠澳门\""
+          ],
+          "broad": [
+            "+翡翠 +原石 +澳门",
+            "+翡翠 +定制 +澳门"
+          ]
+        },
+        "negativeKeywords": [
+          "台湾",
+          "香港",
+          "新加坡",
+          "美国",
+          "加拿大",
+          "免费",
+          "便宜",
+          "批发"
+        ]
+      },
+      {
+        "id": "AG004",
+        "name": "翡翠原石 - 新加坡",
+        "status": "ENABLED",
+        "budgetAllocation": "20%",
+        "dailyBudget": 200,
+        "targeting": {
+          "location": "新加坡",
+          "age": ["35-44", "45-54", "55-64"],
+          "gender": ["MALE", "FEMALE"],
+          "genderBidAdjustment": {
+            "MALE": 30,
+            "FEMALE": -30
+          }
+        },
+        "keywords": {
+          "exact": [
+            "[翡翠原石 新加坡]",
+            "[缅甸翡翠 新加坡]",
+            "[翡翠定制 新加坡]",
+            "[新加坡翡翠定制]",
+            "[翡翠原石价格 新加坡]"
+          ],
+          "phrase": [
+            "\"新加坡翡翠原石定制\"",
+            "\"新加坡翡翠手镯定制\"",
+            "\"缅甸翡翠新加坡代购\"",
+            "\"新加坡翡翠吊坠定制\"",
+            "\"高端翡翠新加坡\""
+          ],
+          "broad": [
+            "+翡翠 +原石 +新加坡",
+            "+缅甸 +翡翠 +新加坡",
+            "+翡翠 +定制 +新加坡"
+          ]
+        },
+        "negativeKeywords": [
+          "台湾",
+          "香港",
+          "澳门",
+          "美国",
+          "加拿大",
+          "免费",
+          "便宜",
+          "批发"
+        ]
+      },
+      {
+        "id": "AG005",
+        "name": "翡翠原石 - 美国",
+        "status": "ENABLED",
+        "budgetAllocation": "20%",
+        "dailyBudget": 200,
+        "targeting": {
+          "location": "美国",
+          "age": ["35-44", "45-54", "55-64"],
+          "gender": ["MALE", "FEMALE"],
+          "genderBidAdjustment": {
+            "MALE": 30,
+            "FEMALE": -30
+          }
+        },
+        "keywords": {
+          "exact": [
+            "[翡翠原石 美国]",
+            "[翡翠定制 美国]",
+            "[缅甸翡翠 美国代购]",
+            "[美国翡翠定制]",
+            "[翡翠原石价格 美国]"
+          ],
+          "phrase": [
+            "\"美国翡翠原石定制\"",
+            "\"美国翡翠吊坠定制\"",
+            "\"中国翡翠美国直邮\"",
+            "\"美国翡翠手镯定制\"",
+            "\"高端翡翠美国\""
+          ],
+          "broad": [
+            "+翡翠 +原石 +美国",
+            "+缅甸 +翡翠 +美国",
+            "+翡翠 +定制 +美国"
+          ]
+        },
+        "negativeKeywords": [
+          "台湾",
+          "香港",
+          "澳门",
+          "新加坡",
+          "加拿大",
+          "免费",
+          "便宜",
+          "批发"
+        ]
+      },
+      {
+        "id": "AG006",
+        "name": "翡翠原石 - 加拿大",
+        "status": "ENABLED",
+        "budgetAllocation": "15%",
+        "dailyBudget": 150,
+        "targeting": {
+          "location": "加拿大",
+          "age": ["35-44", "45-54", "55-64"],
+          "gender": ["MALE", "FEMALE"],
+          "genderBidAdjustment": {
+            "MALE": 30,
+            "FEMALE": -30
+          }
+        },
+        "keywords": {
+          "exact": [
+            "[翡翠原石 加拿大]",
+            "[翡翠定制 加拿大]",
+            "[加拿大翡翠定制]",
+            "[翡翠原石价格 加拿大]",
+            "[缅甸翡翠加拿大]"
+          ],
+          "phrase": [
+            "\"加拿大翡翠原石定制\"",
+            "\"加拿大翡翠手镯定制\"",
+            "\"加拿大翡翠吊坠定制\"",
+            "\"中国翡翠加拿大直邮\"",
+            "\"高端翡翠加拿大\""
+          ],
+          "broad": [
+            "+翡翠 +原石 +加拿大",
+            "+翡翠 +定制 +加拿大",
+            "+缅甸 +翡翠 +加拿大"
+          ]
+        },
+        "negativeKeywords": [
+          "台湾",
+          "香港",
+          "澳门",
+          "新加坡",
+          "美国",
+          "免费",
+          "便宜",
+          "批发"
+        ]
+      },
+      {
+        "id": "AG007",
+        "name": "珠宝定制服务 - 通用",
+        "status": "ENABLED",
+        "budgetAllocation": "动态分配",
+        "dailyBudget": "灵活调整",
+        "targeting": {
+          "location": "所有目标地区",
+          "age": ["35-44", "45-54", "55-64"],
+          "gender": ["MALE", "FEMALE"],
+          "genderBidAdjustment": {
+            "MALE": 30,
+            "FEMALE": -30
+          }
+        },
+        "keywords": {
+          "exact": [
+            "[珠宝定制]",
+            "[翡翠珠宝定制]",
+            "[高端珠宝定制]",
+            "[私人珠宝定制]",
+            "[珠宝定制服务]",
+            "[翡翠戒指定制]",
+            "[翡翠吊坠定制]",
+            "[翡翠手镯定制]"
+          ],
+          "phrase": [
+            "\"珠宝定制戒指吊坠手镯\"",
+            "\"高端翡翠珠宝设计\"",
+            "\"私人珠宝定制推荐\"",
+            "\"翡翠珠宝定制价格\"",
+            "\"一对一珠宝定制服务\"",
+            "\"珠宝定制工作室\"",
+            "\"珠宝定制流程\"",
+            "\"翡翠珠宝定制哪家好\""
+          ],
+          "broad": [
+            "+珠宝 +定制",
+            "+翡翠 +珠宝 +定制",
+            "+高端 +珠宝 +定制",
+            "+私人 +珠宝 +定制"
+          ]
+        },
+        "negativeKeywords": [
+          "免费",
+          "便宜",
+          "批发",
+          "加盟",
+          "培训",
+          "课程",
+          "学习",
+          "教程",
+          "DIY",
+          "制作",
+          "工具",
+          "设备",
+          "二手",
+          "回收",
+          "当铺",
+          "鉴定",
+          "证书",
+          "拍卖",
+          "租赁"
+        ]
+      },
+      {
+        "id": "AG008",
+        "name": "高端翡翠收藏 - 通用",
+        "status": "ENABLED",
+        "budgetAllocation": "动态分配",
+        "dailyBudget": "灵活调整",
+        "targeting": {
+          "location": "所有目标地区",
+          "age": ["45-54", "55-64"],
+          "gender": ["MALE", "FEMALE"],
+          "genderBidAdjustment": {
+            "MALE": 40,
+            "FEMALE": -40
+          },
+          "incomeAdjustment": {
+            "top10": 50,
+            "top11-20": 20
+          }
+        },
+        "keywords": {
+          "exact": [
+            "[高端翡翠]",
+            "[翡翠收藏]",
+            "[翡翠投资]",
+            "[收藏级翡翠]",
+            "[翡翠艺术品]",
+            "[收藏翡翠原石]",
+            "[翡翠投资收藏]"
+          ],
+          "phrase": [
+            "\"高端翡翠收藏推荐\"",
+            "\"收藏级翡翠原石\"",
+            "\"翡翠投资价值分析\"",
+            "\"高端翡翠定制艺术家\"",
+            "\"翡翠资产配置方案\"",
+            "\"传承级翡翠珠宝\"",
+            "\"翡翠保值增值\"",
+            "\"稀缺翡翠资源\""
+          ],
+          "broad": [
+            "+高端 +翡翠 +收藏",
+            "+翡翠 +投资 +收藏",
+            "+收藏级 +翡翠"
+          ]
+        },
+        "negativeKeywords": [
+          "免费",
+          "便宜",
+          "批发",
+          "加盟",
+          "培训",
+          "课程",
+          "学习",
+          "教程",
+          "DIY",
+          "制作",
+          "工具",
+          "设备",
+          "二手",
+          "回收",
+          "当铺",
+          "鉴定",
+          "证书",
+          "拍卖",
+          "租赁"
+        ]
+      }
+    ]
+  }
+}

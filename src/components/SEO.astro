@@ -12,7 +12,7 @@ interface Props {
 const {
   title,
   description,
-  image = '/images/单独 LOGO.png',
+  image = '/images/logo-single.png',
   canonicalURL = Astro.url,
   type = 'website',
   publishedTime,
@@ -20,7 +20,7 @@ const {
 } = Astro.props;
 
 const siteUrl = 'https://www.ltmdfc.top';
-const imageUrl = image && image.startsWith('http') ? image : `${siteUrl}${image || '/images/单独 LOGO.png'}`;
+const imageUrl = image && image.startsWith('http') ? image : `${siteUrl}${image || '/images/logo-single.png'}`;
 ---
 
 <!-- Primary Meta Tags -->
@@ -60,8 +60,8 @@ const imageUrl = image && image.startsWith('http') ? image : `${siteUrl}${image 
   "name": "洛天翡翠",
   "alternateName": "翡翠原石代購",
   "url": "${siteUrl}",
-  "logo": "${siteUrl}/images/单独 LOGO.png",
-  "image": "${siteUrl}/images/单独 LOGO.png",
+  "logo": "${siteUrl}/images/logo-single.png",
+  "image": "${siteUrl}/images/logo-single.png",
   "description": "專業翡翠原石買手，位於曼德勒，擁有 10 年經驗，提供高品質翡翠原石代購服務",
   "contactPoint": {
     "@type": "ContactPoint",
@@ -75,7 +75,7 @@ const imageUrl = image && image.startsWith('http') ? image : `${siteUrl}${image 
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "洛天翡翠",
-  "image": "${siteUrl}/images/单独 LOGO.png",
+  "image": "${siteUrl}/images/logo-single.png",
   "description": "專業翡翠原石買手，位於曼德勒，擁有 10 年經驗",
   "priceRange": "$$$",
   "address": {

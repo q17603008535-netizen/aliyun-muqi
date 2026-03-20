@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import SEO from '../components/SEO.astro';
 import { getCollection } from 'astro:content';
-import SpeedInsights from "@vercel/speed-insights/astro";
+// import SpeedInsights from "@vercel/speed-insights/astro"; // 已注释 - Google Ads 审核期间移除
 
 interface Props {
   title: string;
@@ -44,21 +44,21 @@ const footScripts = trackingCodes?.data.foot_scripts || '';
     <meta name="generator" content={Astro.generator} />
     
     <!-- CDN 预连接优化 -->
-    <link rel="dns-prefetch" href="//vercel-dns.com" />
-    <link rel="preconnect" href="https://vercel-dns.com" />
+    <!-- <link rel="dns-prefetch" href="//vercel-dns.com" /> 已注释 - Google Ads 审核期间移除 -->
+    <!-- <link rel="preconnect" href="https://vercel-dns.com" /> 已注释 - Google Ads 审核期间移除 -->
     
     <!-- 图片预加载 - 首屏关键资源 -->
     <link 
       rel="preload" 
       as="image" 
-      href="/images/人物 2.png"
+      href="/images/person2.png"
       media="(max-width: 768px)"
       fetchpriority="high"
     />
     <link 
       rel="preload" 
       as="image" 
-      href="/images/人物 1.png"
+      href="/images/person1.png"
       media="(min-width: 769px)"
       fetchpriority="high"
     />
@@ -110,19 +110,19 @@ const footScripts = trackingCodes?.data.foot_scripts || '';
     />
     
     <!-- 追踪代码注入（Head） -->
-    {headScripts && <script set:html={headScripts} />}
+    {headScripts && <Fragment set:html={headScripts} />}
     
     <!-- Vercel Speed Insights - 性能监控 -->
-    <SpeedInsights />
+    <!-- <SpeedInsights /> 已注释 - Google Ads 审核期间移除 -->
   </head>
   <body class="font-sans antialiased text-gray-800 bg-white">
     <!-- 追踪代码注入（Body） -->
-    {bodyScripts && <script set:html={bodyScripts} />}
+    {bodyScripts && <Fragment set:html={bodyScripts} />}
     
     <slot />
     
     <!-- 追踪代码注入（Foot） -->
-    {footScripts && <script set:html={footScripts} />}
+    {footScripts && <Fragment set:html={footScripts} />}
   </body>
 </html>
 

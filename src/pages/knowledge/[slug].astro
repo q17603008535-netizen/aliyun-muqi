@@ -41,8 +41,8 @@ export async function getStaticPaths() {
     <!-- 导航 -->
     <KnowledgeNav
       currentPage="detail"
-      prevSlug={prevArticle?.id}
-      nextSlug={nextArticle?.id}
+      prevSlug={prevArticle?.slug}
+      nextSlug={nextArticle?.slug}
     />
     
     <!-- 文章标题 -->

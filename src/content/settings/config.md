@@ -1,5 +1,5 @@
 ---
-logo: /images/单独LOGO-1.png
+logo: /images/logo-single-1.png
 brand_name: 洛天翡翠
 instagram: https://www.tiktok.com
 youtube: https://www.youtube.com/@LTFCMDYX
