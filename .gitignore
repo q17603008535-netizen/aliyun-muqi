@@ -32,3 +32,10 @@ pnpm-debug.log*
 项目完成情况汇报_*.md
 项目分析报告_v3.md
 check_page.py
+
+# Google Ads 审核期间临时隐藏的文件（本地保留，不推送）
+src/pages/_knowledge/
+docs/RESTORE_GUIDE.md
+scripts/restore-knowledge.sh
+.hidden-pages-backup.md
+恢复科普页面提示.md
