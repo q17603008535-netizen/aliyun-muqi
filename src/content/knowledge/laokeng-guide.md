@@ -4,7 +4,7 @@ description: "老坑翡翠是高品质翡翠的代名词，本文分享老坑翡
 publishDate: 2026-03-18
 category: "选购技巧"
 tags: ["老坑", "翡翠选购", "技巧"]
-image: "/images/knowledge/laokeng-sample.jpg"
+image: "/images/knowledge/laokeng-guide.jpg"
 featured: true
 order: 2
 ---

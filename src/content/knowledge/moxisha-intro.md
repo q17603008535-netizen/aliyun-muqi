@@ -4,7 +4,7 @@ description: "莫西沙是缅甸翡翠最著名的场口之一，以出产高色
 publishDate: 2026-03-18
 category: "场口解析"
 tags: ["莫西沙", "翡翠原石", "场口"]
-image: "/images/knowledge/moxisha-sample.jpg"
+image: "/images/knowledge/moxisha-intro.jpg"
 featured: true
 order: 1
 ---
@@ -19,4 +19,4 @@ order: 1
 - 颜色正
 - 透明度高
 
-![莫西沙原石样本](/images/knowledge/moxisha-sample.jpg)
+![莫西沙原石](/images/knowledge/moxisha-intro.jpg)

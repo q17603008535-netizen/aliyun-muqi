@@ -59,46 +59,38 @@ const config = {
   description_visible: productsConfig.description_visible !== false,
 };
 
-const displayProducts = products.length > 0 ? products : [
-  { name: "翡翠原石 #001", weight: "2.5kg", price: "", description: "滿綠色澤，水頭足" },
-  { name: "翡翠原石 #002", weight: "1.8kg", price: "", description: "紫羅蘭色，種水好" },
-  { name: "翡翠原石 #003", weight: "3.2kg", price: "", description: "春帶彩，色彩鮮豔" },
-  { name: "翡翠原石 #004", weight: "2.1kg", price: "", description: "玻璃種，透明度高" },
-  { name: "翡翠原石 #005", weight: "1.5kg", price: "", description: "陽綠色，品質上乘" },
-  { name: "翡翠原石 #006", weight: "2.8kg", price: "", description: "藍綠色，適合雕刻" },
-  { name: "翡翠原石 #007", weight: "2.0kg", price: "", description: "帝王綠，極品收藏" },
-  { name: "翡翠原石 #008", weight: "1.9kg", price: "", description: "白底青，質地細膩" },
-];
+const displayProducts = products;
 ---
 
-<section id="products" class="py-20 bg-white fade-in-section">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">{title}</h2>
-      <p class="text-gray-600 max-w-2xl mx-auto">{subtitle}</p>
-      <div class="w-24 h-1 bg-primary mx-auto mt-4"></div>
-    </div>
-    
-    {loading || skeleton ? (
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {Array.from({ length: 8 }).map((_, index) => (
-          <div class="group bg-white border border-gray-100 rounded-xl overflow-hidden card-hover relative">
-            <div class="aspect-square bg-gradient-to-br from-stone-100 to-stone-200 relative overflow-hidden">
-              <div class="absolute inset-0 animate-pulse bg-gray-200"></div>
-            </div>
-            <div class="p-4">
-              <div class="animate-pulse">
-                <div class="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
-                <div class="h-3 bg-gray-200 rounded w-1/2 mb-2"></div>
-                <div class="h-3 bg-gray-200 rounded w-5/6"></div>
+{displayProducts && displayProducts.length > 0 && (
+  <section id="products" class="py-20 bg-white fade-in-section">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">{title}</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">{subtitle}</p>
+        <div class="w-24 h-1 bg-primary mx-auto mt-4"></div>
+      </div>
+      
+      {loading || skeleton ? (
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {Array.from({ length: 8 }).map((_, index) => (
+            <div class="group bg-white border border-gray-100 rounded-xl overflow-hidden card-hover relative">
+              <div class="aspect-square bg-gradient-to-br from-stone-100 to-stone-200 relative overflow-hidden">
+                <div class="absolute inset-0 animate-pulse bg-gray-200"></div>
+              </div>
+              <div class="p-4">
+                <div class="animate-pulse">
+                  <div class="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+                  <div class="h-3 bg-gray-200 rounded w-1/2 mb-2"></div>
+                  <div class="h-3 bg-gray-200 rounded w-5/6"></div>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
-    ) : (
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {displayProducts.map((product) => (
+          ))}
+        </div>
+      ) : (
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {displayProducts.map((product) => (
           <div class="group bg-white border border-gray-100 rounded-xl overflow-hidden card-hover relative">
             <div class="aspect-square bg-gradient-to-br from-stone-100 to-stone-200 relative overflow-hidden">
               {product.image ? (
@@ -165,6 +157,7 @@ const displayProducts = products.length > 0 ? products : [
     </div>
   </div>
 </section>
+)}
 
 {contacts.length > 0 && (
   <div id="product-contact-modal" class="fixed inset-0 z-50 hidden">
