@@ -1,11 +1,11 @@
 # Robots.txt for 洛天翡翠 - 翡翠原石代購
-# https://yourdomain.com
+# https://ltmdfc.top
 
 User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://yourdomain.com/sitemap-index.xml
+Sitemap: https://ltmdfc.top/sitemap-index.xml
 
 # Crawl-delay (optional)
 Crawl-delay: 1
