@@ -40,4 +40,8 @@ jobs:
       run: |
         ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no -p ${{ secrets.SERVER_PORT }} \
           ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} \
-          "chown -R www:www /www/wwwroot/muqijewelry.com/ && chmod -R 755 /www/wwwroot/muqijewelry.com/ && echo 'Deploy completed'"
+          "find /www/wwwroot/muqijewelry.com/ -type f -not -name '.user.ini' -not -name '.htaccess' -exec chown www:www {} \; && \
+           find /www/wwwroot/muqijewelry.com/ -type d -exec chown www:www {} \; && \
+           find /www/wwwroot/muqijewelry.com/ -type f -not -name '.user.ini' -not -name '.htaccess' -exec chmod 644 {} \; && \
+           find /www/wwwroot/muqijewelry.com/ -type d -exec chmod 755 {} \; && \
+           echo 'Deploy completed'"
