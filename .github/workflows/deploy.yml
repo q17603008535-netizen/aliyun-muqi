@@ -24,26 +24,20 @@ jobs:
     - name: Build website
       run: npm run build
       
-    - name: Deploy to server via SSH
-      uses: easingthemes/ssh-deploy@v4
-      with:
-        SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-        REMOTE_HOST: ${{ secrets.SERVER_HOST }}
-        REMOTE_USER: ${{ secrets.SERVER_USER }}
-        REMOTE_PORT: ${{ secrets.SERVER_PORT }}
-        SOURCE: "dist/"
-        TARGET: "/www/wwwroot/muqijewelry.com/"
-        ARGS: "-rltgoDzvO --delete"
-        EXCLUDE: "/dist/, /node_modules/"
+    - name: Setup SSH
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.SERVER_SSH_KEY }}" > ~/.ssh/deploy_key
+        chmod 600 ~/.ssh/deploy_key
+        ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
+        
+    - name: Deploy to server
+      run: |
+        rsync -avz --delete -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no -p ${{ secrets.SERVER_PORT }}" \
+          dist/ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/www/wwwroot/muqijewelry.com/
         
     - name: Set permissions
-      uses: easingthemes/ssh-deploy@v4
-      with:
-        SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-        REMOTE_HOST: ${{ secrets.SERVER_HOST }}
-        REMOTE_USER: ${{ secrets.SERVER_USER }}
-        REMOTE_PORT: ${{ secrets.SERVER_PORT }}
-        SCRIPT_AFTER: |
-          chown -R www:www /www/wwwroot/muqijewelry.com/
-          chmod -R 755 /www/wwwroot/muqijewelry.com/
-          echo "Deploy completed at $(date)"
+      run: |
+        ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no -p ${{ secrets.SERVER_PORT }} \
+          ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} \
+          "chown -R www:www /www/wwwroot/muqijewelry.com/ && chmod -R 755 /www/wwwroot/muqijewelry.com/ && echo 'Deploy completed'"
