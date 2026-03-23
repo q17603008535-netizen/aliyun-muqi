@@ -1,4 +1,4 @@
-# Robots.txt for 洛天翡翠 - 翡翠原石代購
+# Robots.txt for 沐祁珠寶 - 缅甸翡翠定制专家
 # https://ltmdfc.top
 
 User-agent: *

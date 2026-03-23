@@ -11,17 +11,17 @@ interface Props {
 const { settings = {} } = Astro.props;
 
 const currentYear = new Date().getFullYear();
-const companyName = settings.brand_name || "翡翠原石代購";
+const companyName = settings.brand_name || "沐祁珠寶";
 ---
 
 <footer class="bg-stone-900 text-stone-400 py-12">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid md:grid-cols-3 gap-8 mb-8">
+    <div class="grid md:grid-cols-4 gap-8 mb-8">
       <div>
-        <h3 class="text-white text-lg font-semibold mb-4">{settings.brand_name || "翡翠原石代購"}</h3>
+        <h3 class="text-white text-lg font-semibold mb-4">{settings.brand_name || "沐祁珠寶"}</h3>
         <p class="text-sm leading-relaxed mb-4">
           專業翡翠原石買手，位於曼德勒翡翠原石市場。<br/>
-          10年行業經驗，只為給您提供最優質的翡翠原石。
+          15年行業經驗，只為給您提供最優質的翡翠原石。
         </p>
         <div class="space-y-2 text-sm">
           <div class="flex items-start gap-2">

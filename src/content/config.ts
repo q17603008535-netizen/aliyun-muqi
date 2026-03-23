@@ -4,7 +4,7 @@ const settings = defineCollection({
   type: 'content',
   schema: z.object({
     logo: z.string().optional(),
-    brand_name: z.string().default('翡翠代購'),
+    brand_name: z.string().default('沐祁珠寶'),
     instagram: z.string().url().optional(),
     youtube: z.string().url().optional(),
     facebook: z.string().url().optional(),
@@ -46,7 +46,7 @@ const hero = defineCollection({
       text: z.string(),
     })).default([
       { text: '專業翡翠原石買手' },
-      { text: '曼德勒直採｜10年經驗' },
+      { text: '曼德勒直採｜15年經驗' },
     ]),
     title_lines_mobile: z.array(z.object({
       text: z.string(),
@@ -58,7 +58,7 @@ const hero = defineCollection({
       text: z.string(),
     })).default([
       { text: '本地匯率優勢' },
-      { text: '一物一證｜只賺取20%代購費' },
+      { text: '一物一證｜只賺取20%定制费' },
     ]),
     subtitle_lines_mobile: z.array(z.object({
       text: z.string(),
@@ -67,7 +67,7 @@ const hero = defineCollection({
       { text: '一物一證' },
     ]),
     cta_text: z.string().default('立即咨詢'),
-    badge_text: z.string().default('曼德勒翡翠原石專業代購'),
+    badge_text: z.string().default('缅甸翡翠定制专家'),
     youtube_url: z.string().optional(),
   }),
 });
@@ -76,7 +76,7 @@ const about = defineCollection({
   type: 'content',
   schema: z.object({
     experience_image: z.string().optional(),
-    experience_text: z.string().default('10年+'),
+    experience_text: z.string().default('15年+'),
     title: z.string().default('專業翡翠原石買手'),
     description: z.string().default('有自己獨特的買原石邏輯，保證客戶買到的原石都能做貨'),
     feature_1_title: z.string().default('14年雕刻學徒出身'),
@@ -103,7 +103,7 @@ const trust = defineCollection({
       { icon: '盾牌', title: '一物一證', description: '每件翡翠原石均附帶專業鑒定證書，保證天然A貨，品質有保障' },
       { icon: '貨幣', title: '本地匯率', description: '緬甸本地匯率，比國際匯率低近 50%，價格更優惠' },
       { icon: '循環', title: '7天鑑賞期', description: '提供7天無條件退換貨服務，讓您有充足時間考慮' },
-      { icon: '商務', title: '代購費透明', description: '只賺取 20% 代購費，絕不額外收費' },
+      { icon: '商務', title: '定制费透明', description: '只賺取 20% 定制费，絕不額外收費' },
       { icon: '商務', title: '瑞麗公司', description: '瑞麗設有分公司，正規經營，誠信可靠' },
       { icon: '切割', title: '加工廠合作', description: '與專業加工廠合作，提供切割、雕刻等一站式服務' },
     ]),
@@ -121,7 +121,7 @@ const why_us = defineCollection({
     })).default([
       { icon: '價格優勢', title: '價格優勢', description: '收貨量大，品質高、價格低。本地匯率比國際低50%' },
       { icon: '品質保證', title: '品質保證', description: '一物一證，天然A貨。瑞麗公司正規經營' },
-      { icon: '專業可靠', title: '專業可靠', description: '10年行業經驗。14年雕刻學徒眼光' },
+      { icon: '專業可靠', title: '專業可靠', description: '15年行業經驗。14年雕刻學徒眼光' },
       { icon: '客戶口碑', title: '客戶口碑', description: '5位以上客戶跟隨3年以上。不割韭菜，真實做生意' },
     ]),
   }),

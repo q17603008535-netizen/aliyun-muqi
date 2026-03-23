@@ -11,8 +11,8 @@ items:
     title: 完善售後服務
     description: 根據您的喜好專門挑選 | 定制全程跟蹤 | 不滿意可隨時溝通
   - icon: 貨幣
-    title: 代購費透明
-    description: 只賺取 20% 代購費 | 絕不額外收費
+    title: 定制費透明
+    description: 只賺取 20% 定制費 | 絕不額外收費
   - icon: 商務
     title: 瑞麗公司
     description: 瑞麗設有分公司 | 緬甸設有收購檔口 | 正規經營 誠信可靠
