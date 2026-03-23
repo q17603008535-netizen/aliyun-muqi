@@ -3,9 +3,28 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>內容管理 - 翡翠原石</title>
+  <title>內容管理 - 沐祁珠寶</title>
+  <script>
+    // Configure GitHub OAuth
+    window.CMS_MANUAL_INIT = true;
+  </script>
 </head>
 <body>
   <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
+  <script>
+    // Initialize CMS with GitHub client ID
+    CMS.init({
+      config: {
+        backend: {
+          name: 'github',
+          repo: 'q17603008535-netizen/aliyun-muqi',
+          branch: 'main',
+          auth_type: 'implicit',
+          app_id: 'Ov23ctWVKuvhpubKXMJW'
+        }
+      }
+    });
+  </script>
 </body>
 </html>
+
