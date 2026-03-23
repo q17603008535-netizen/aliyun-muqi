@@ -2,6 +2,10 @@ backend:
   name: github
   repo: q17603008535-netizen/aliyun-muqi
   branch: main
+  # 使用 GitHub Token 登录（无需 OAuth）
+
+# 启用本地开发模式（可选）
+# local_backend: true
 
 media_folder: public/images
 public_folder: /images
