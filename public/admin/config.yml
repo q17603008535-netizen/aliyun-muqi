@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: q17603008535-netizen/jade-website-v3
+  repo: q17603008535-netizen/aliyun-muqi
   branch: main
 
 media_folder: public/images
