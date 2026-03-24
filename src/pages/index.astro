@@ -30,6 +30,9 @@ const productsConfig = productsConfigData[0]?.data || {};
 const testimonialsData = await getCollection('testimonials');
 const testimonials = testimonialsData.map(t => t.data);
 
+const testimonialsConfigData = await getCollection('testimonials_config');
+const testimonialsConfig = testimonialsConfigData[0]?.data || {};
+
 const heroData = await getCollection('hero');
 const hero = heroData[0]?.data || {};
 
@@ -57,7 +60,7 @@ const settings = settingsData[0]?.data || {};
     <Products products={products} productsConfig={productsConfig} contacts={contacts} />
     <!-- <KnowledgeWindow /> 已注释 - Google Ads 审核期间隐藏科普页面 -->
     <WhyUs whyUs={whyUs} />
-    <Testimonials testimonials={testimonials} />
+    <Testimonials testimonials={testimonials} testimonialsConfig={testimonialsConfig} />
     <Contact contacts={contacts} />
   </main>
   

@@ -6,14 +6,19 @@ interface Testimonial {
   rating: number;
 }
 
+interface TestimonialsConfig {
+  title?: string;
+  subtitle?: string;
+}
+
 interface Props {
   testimonials?: Testimonial[];
-  title?: string;
+  testimonialsConfig?: TestimonialsConfig;
 }
 
 const { 
   testimonials = [],
-  title = "客戶見證" 
+  testimonialsConfig = {}
 } = Astro.props;
 
 const displayTestimonials = testimonials;
@@ -23,9 +28,9 @@ const displayTestimonials = testimonials;
   <section id="testimonials" class="py-20 bg-white fade-in-section">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">{title}</h2>
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">{testimonialsConfig.title || "客戶見證"}</h2>
         <p class="text-gray-600 max-w-2xl mx-auto">
-          感謝客戶的信任與支持
+          {testimonialsConfig.subtitle || "感謝客戶的信任與支持"}
         </p>
         <div class="w-24 h-1 bg-primary mx-auto mt-4"></div>
       </div>

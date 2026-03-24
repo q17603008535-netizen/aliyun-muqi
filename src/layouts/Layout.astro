@@ -2,7 +2,6 @@
 import '../styles/global.css';
 import SEO from '../components/SEO.astro';
 import { getCollection } from 'astro:content';
-// import SpeedInsights from "@vercel/speed-insights/astro"; // 已注释 - Google Ads 审核期间移除
 
 interface Props {
   title: string;
@@ -42,10 +41,6 @@ const footScripts = trackingCodes?.data.foot_scripts || '';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    
-    <!-- CDN 预连接优化 -->
-    <!-- <link rel="dns-prefetch" href="//vercel-dns.com" /> 已注释 - Google Ads 审核期间移除 -->
-    <!-- <link rel="preconnect" href="https://vercel-dns.com" /> 已注释 - Google Ads 审核期间移除 -->
     
     <!-- 图片预加载 - 首屏关键资源 -->
     <link 

@@ -161,6 +161,15 @@ collections:
       - { name: content, label: 評價內容, widget: text }
       - { name: rating, label: 評分, widget: number, min: 1, max: 5, default: 5 }
 
+  - name: testimonials_config
+    label: 客戶評價設置
+    folder: src/content/testimonials_config
+    create: false
+    slug: "config"
+    fields:
+      - { name: title, label: 標題, widget: string, default: "客戶見證" }
+      - { name: subtitle, label: 副標題, widget: string, default: "感謝客戶的信任與支持" }
+
   - name: tracking_codes
     label: 追蹤代碼管理
     folder: src/content/tracking_codes
