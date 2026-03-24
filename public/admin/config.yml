@@ -92,7 +92,7 @@ collections:
     slug: "config"
     fields:
       - { name: experience_image, label: 經驗圖片, widget: image, hint: "建議比例 1:1 方形" }
-      - { name: experience_text, label: 經驗文字, widget: string, default: "15年+" }
+      - { name: experience_text, label: 經驗文字, widget: string, default: "10 年+" }
       - { name: title, label: 標題, widget: string, default: "專業翡翠原石買手" }
       - { name: description, label: 描述文字, widget: string, default: "有自己獨特的買原石邏輯，保證客戶買到的原石都能做貨" }
       - { name: feature_1_title, label: 特色1標題, widget: string, default: "14年雕刻學徒出身" }
@@ -112,6 +112,7 @@ collections:
     slug: "config"
     fields:
       - { name: title, label: 標題, widget: string, default: "信任保證" }
+      - { name: subtitle, label: 副標題, widget: string, default: "選擇我們的信心保障" }
       - name: items
         label: 保證項目
         widget: list
@@ -127,6 +128,7 @@ collections:
     slug: "config"
     fields:
       - { name: title, label: 標題, widget: string, default: "為什麼選擇我們" }
+      - { name: subtitle, label: 副標題, widget: string, default: "核心優勢，讓您放心選購" }
       - name: items
         label: 優勢項目
         widget: list
