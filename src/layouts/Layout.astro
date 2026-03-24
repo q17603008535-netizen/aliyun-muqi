@@ -106,9 +106,6 @@ const footScripts = trackingCodes?.data.foot_scripts || '';
     
     <!-- 追踪代码注入（Head） -->
     {headScripts && <Fragment set:html={headScripts} />}
-    
-    <!-- Vercel Speed Insights - 性能监控 -->
-    <!-- <SpeedInsights /> 已注释 - Google Ads 审核期间移除 -->
   </head>
   <body class="font-sans antialiased text-gray-800 bg-white">
     <!-- 追踪代码注入（Body） -->
