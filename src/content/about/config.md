@@ -1,6 +1,6 @@
 ---
 experience_image: /images/文字LOGO.png
-experience_text: 10年
+experience_text: 10 年+
 title: 沐祁珠寶
 description: 我叫洛天，從業10多年的翡翠實戰者，多年在中緬邊境曼德勒翡翠原石交易市場做生意，現場直播翡翠原石，匯率公開價格透明
 feature_1_title: 2014年雕刻學徒出身
