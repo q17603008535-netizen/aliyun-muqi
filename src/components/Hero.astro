@@ -88,13 +88,15 @@ const subtitleLines = hero.subtitle_lines?.length ? hero.subtitle_lines : defaul
       <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight text-center">
         <span class="hidden md:inline">
           <span class="block text-secondary mb-2">沐祁珠寶</span>
-          <span class="block">專業翡翠原石買手</span>
-          <span class="block">曼德勒直採｜15年+經驗</span>
+          {titleLines.map((line, index) => (
+            <span class="block">{line.text}</span>
+          ))}
         </span>
         <span class="md:hidden">
           <span class="block text-secondary mb-2">沐祁珠寶</span>
-          <span class="block">專業翡翠買手</span>
-          <span class="block">曼德勒源頭直採</span>
+          {titleLinesMobile.map((line, index) => (
+            <span class="block">{line.text}</span>
+          ))}
         </span>
       </h1>
     
