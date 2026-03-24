@@ -4,7 +4,7 @@ subtitle: 核心優勢，讓您放心選購
 items:
   - icon: 價格優勢
     title: 價格優勢
-    description: 收貨量大、品質高、價格低 | 本地匯率比國際低 50%
+    description: 收貨量大、品質高、價格低 | 減少80%中間商差價
   - icon: 品質保證
     title: 品質保證
     description: 一物一證 | 天然A貨 | 瑞麗公司正規經營
