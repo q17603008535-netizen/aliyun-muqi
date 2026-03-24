@@ -1,8 +1,8 @@
 ---
-experience_image: /images/logo-combined-1.png
-experience_text: 15 年
+experience_image: /images/文字LOGO.png
+experience_text: 10年
 title: 沐祁珠寶
-description: 我是洛天，一名專業的翡翠設計師，多年在中緬邊境曼德勒翡翠原石交易市場做生意，現場直播翡翠原石，匯率公開價格透明
+description: 我叫洛天，從業10多年的翡翠實戰者，多年在中緬邊境曼德勒翡翠原石交易市場做生意，現場直播翡翠原石，匯率公開價格透明
 feature_1_title: 2014年雕刻學徒出身
 feature_1_description: 2014年開始做雕刻學徒，潛心5年，2019年開始轉做直播，後來發展翡翠源頭市場定制生意
 feature_1_icon: 盾牌
