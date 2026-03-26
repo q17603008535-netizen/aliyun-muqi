@@ -1,9 +1,19 @@
 ---
+interface ConversationItem {
+  speaker: string;
+  text: string;
+}
+
 interface Testimonial {
   name: string;
   location: string;
   content: string;
   rating: number;
+  timestamp?: string;
+  customize_type?: string;
+  conversation?: ConversationItem[];
+  before_image?: string;
+  after_image?: string;
 }
 
 interface TestimonialsConfig {
@@ -37,28 +47,81 @@ const displayTestimonials = testimonials;
       
       <div class="grid md:grid-cols-3 gap-8">
         {displayTestimonials.map((testimonial) => (
-        <div class="bg-stone-50 p-6 rounded-xl card-hover">
-          <div class="flex items-center gap-1 mb-4">
-            {[...Array(5)].map((_, i) => (
-              <svg class={`w-5 h-5 ${i < testimonial.rating ? 'text-amber-400' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-              </svg>
-            ))}
+          <div class="bg-stone-50 p-6 rounded-xl card-hover">
+            <div class="flex items-center gap-1 mb-4">
+              {[...Array(5)].map((_, i) => (
+                <svg class={`w-5 h-5 ${i < testimonial.rating ? 'text-amber-400' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+              ))}
+            </div>
+            
+            {testimonial.customize_type && (
+              <div class="mb-3">
+                <span class="inline-block px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">
+                  {testimonial.customize_type}
+                </span>
+              </div>
+            )}
+            
+            <p class="text-gray-700 mb-4 leading-relaxed">"{testimonial.content}"</p>
+            
+            {testimonial.conversation && testimonial.conversation.length > 0 && (
+              <div class="mb-4 bg-white p-3 rounded-lg text-sm space-y-2">
+                {testimonial.conversation.map((msg) => (
+                  <div class={`flex ${msg.speaker === '客戶' ? 'justify-start' : 'justify-end'}`}>
+                    <div class={`max-w-[80%] px-3 py-2 rounded-lg ${
+                      msg.speaker === '客戶' 
+                        ? 'bg-gray-100 text-gray-700' 
+                        : 'bg-primary/10 text-primary'
+                    }`}>
+                      <p class="text-xs opacity-60 mb-1">{msg.speaker}</p>
+                      <p>{msg.text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+            
+            <div class="flex items-center justify-between border-t pt-4">
+              <div class="flex items-center gap-2">
+                <div class="font-medium text-gray-900">{testimonial.name}</div>
+                {testimonial.location && (
+                  <span class="text-sm text-gray-500">· {testimonial.location}</span>
+                )}
+              </div>
+              {testimonial.timestamp && (
+                <div class="text-xs text-gray-400">{testimonial.timestamp}</div>
+              )}
+            </div>
           </div>
-          <p class="text-gray-700 mb-4 leading-relaxed">"{testimonial.content}"</p>
-          <div class="flex items-center justify-between">
-            <div class="font-medium text-gray-900">{testimonial.name}</div>
-            <div class="text-sm text-gray-500">{testimonial.location}</div>
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
+      
+      <div class="mt-12 text-center">
+        <p class="text-gray-500 text-sm">
+          更多真實客戶評價，可添加微信了解
+        </p>
+      </div>
     </div>
-    
-    <div class="mt-12 text-center">
-      <p class="text-gray-500 text-sm">
-        更多真實客戶評價，可添加微信了解
-      </p>
-    </div>
-  </div>
+  </section>
 </section>
+)}
+
+{(!displayTestimonials || displayTestimonials.length === 0) && (
+  <section id="testimonials" class="py-20 bg-white fade-in-section">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">{testimonialsConfig.title || "客戶見證"}</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          {testimonialsConfig.subtitle || "感謝客戶的信任與支持"}
+        </p>
+        <div class="w-24 h-1 bg-primary mx-auto mt-4"></div>
+      </div>
+      
+      <div class="text-center py-12">
+        <p class="text-gray-500">敬請期待更多客戶見證</p>
+      </div>
+    </div>
+  </section>
 )}

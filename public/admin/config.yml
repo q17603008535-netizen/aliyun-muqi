@@ -160,6 +160,17 @@ collections:
       - { name: location, label: 地區, widget: string }
       - { name: content, label: 評價內容, widget: text }
       - { name: rating, label: 評分, widget: number, min: 1, max: 5, default: 5 }
+      - { name: timestamp, label: 評價時間, widget: datetime, default: "", required: false }
+      - { name: customize_type, label: 定制類型, widget: select, options: ["手鐲定制", "吊墜定制", "戒指定制", "耳環定制", "其他定制"], default: "手鐲定制", required: false }
+      - name: conversation
+        label: 對話內容（可選）
+        widget: list
+        required: false
+        fields:
+          - { name: speaker, label: 發言者, widget: select, options: ["客戶", "洛天"], default: "客戶" }
+          - { name: text, label: 內容, widget: text }
+      - { name: before_image, label: 定制前圖片, widget: image, required: false }
+      - { name: after_image, label: 定制後圖片, widget: image, required: false }
 
   - name: testimonials_config
     label: 客戶評價設置
@@ -179,3 +190,77 @@ collections:
       - { name: head_scripts, label: "Head 代碼（<head>）", widget: text, default: "", required: false, hint: "放置在<head>标签内，例如：Google Analytics、Google Ads 轉化追蹤等代碼" }
       - { name: body_scripts, label: "Body 代碼（<body>）", widget: text, default: "", required: false, hint: "放置在<body>标签内，例如：Pixel 初始化代碼等" }
       - { name: foot_scripts, label: "底部代碼（</body> 前）", widget: text, default: "", required: false, hint: "放置在</body>标签前，例如：客服聊天工具、推薦引擎等代碼" }
+
+  - name: free_gifts
+    label: 免費誘餌
+    folder: src/content/free_gifts
+    create: false
+    slug: "config"
+    fields:
+      - { name: title, label: 標題, widget: string, default: "今日加微信，免費獲取" }
+      - { name: subtitle, label: 副標題, widget: string, default: "限量供應，錯過不再" }
+      - name: gifts
+        label: 免費項目
+        widget: list
+        fields:
+          - { name: icon, label: 圖標, widget: select, options: ["鉴定", "设计", "手册", "优惠券", "原石", "证书"], default: "鉴定" }
+          - { name: title, label: 標題, widget: string }
+          - { name: description, label: 描述, widget: string }
+      - { name: cta_text, label: 按鈕文字, widget: string, default: "立即領取" }
+      - { name: enabled, label: 顯示板塊, widget: boolean, default: true }
+
+  - name: pain_points
+    label: 痛點挖掘
+    folder: src/content/pain_points
+    create: false
+    slug: "config"
+    fields:
+      - { name: title, label: 標題, widget: string, default: "您是否有以下困擾？" }
+      - name: pain_items
+        label: 痛點項目
+        widget: list
+        fields:
+          - { name: icon, label: 圖標, widget: select, options: ["款式", "定制", "周期", "效果", "价格", "品质", "真假", "选择"], default: "款式" }
+          - { name: text, label: 痛點文字, widget: string }
+      - { name: solution_title, label: 解決方案標題, widget: string, default: "沐祁珠寶為您解決以上所有問題" }
+      - { name: solution_description, label: 解決方案描述, widget: string, default: "10年+從業經驗，1000+成功案例" }
+      - { name: enabled, label: 顯示板塊, widget: boolean, default: true }
+
+  - name: price_comparison
+    label: 價格對比
+    folder: src/content/price_comparison
+    create: false
+    slug: "config"
+    fields:
+      - { name: title, label: 標題, widget: string, default: "同樣品質，為何價格相差如此之大？" }
+      - { name: traditional_title, label: 傳統渠道標題, widget: string, default: "傳統商場" }
+      - { name: traditional_price, label: 傳統價格, widget: string, default: "¥30,000" }
+      - name: traditional_reasons
+        label: 傳統渠道劣勢
+        widget: list
+        fields:
+          - { name: text, label: 原因, widget: string }
+      - { name: muqi_title, label: 沐祁標題, widget: string, default: "沐祁定制" }
+      - { name: muqi_price, label: 沐祁價格, widget: string, default: "¥12,000-15,000" }
+      - name: muqi_reasons
+        label: 沐祁優勢
+        widget: list
+        fields:
+          - { name: text, label: 原因, widget: string }
+      - { name: conclusion, label: 結論說明, widget: string, default: "我們不打價格戰，但同等品質下，價格更合理" }
+      - { name: enabled, label: 顯示板塊, widget: boolean, default: true }
+
+  - name: urgency_settings
+    label: 緊迫感設置
+    folder: src/content/urgency_settings
+    create: false
+    slug: "config"
+    fields:
+      - { name: enabled, label: 啟用緊迫感, widget: boolean, default: true }
+      - name: messages
+        label: 緊迫感訊息
+        widget: list
+        fields:
+          - { name: text, label: 訊息文字, widget: string }
+          - { name: position, label: 顯示位置, widget: select, options: ["hero", "free_gifts", "pain_points", "all"], default: "all" }
+      - { name: cta_text, label: 緊迫感按鈕文字, widget: string, default: "立即咨詢" }

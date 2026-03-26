@@ -25,9 +25,10 @@ interface ContactItem {
 interface Props {
   hero?: HeroData;
   contacts?: ContactItem[];
+  urgencyMessage?: string;
 }
 
-const { hero = {}, contacts = [] } = Astro.props;
+const { hero = {}, contacts = [], urgencyMessage = "" } = Astro.props;
 
 // 使用後端配置的圖片路徑，如果沒有配置則使用默認路徑
 const heroBgDesktop = hero.background_image || '/images/person1.png?v=1';
@@ -83,6 +84,14 @@ const subtitleLines = hero.subtitle_lines?.length ? hero.subtitle_lines : defaul
   </div>
 
   <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    {urgencyMessage && (
+      <div class="mb-4 sm:mb-6">
+        <span class="inline-block px-4 py-2 bg-red-500/20 border border-red-500/30 rounded-full text-red-400 text-sm animate-pulse">
+          {urgencyMessage}
+        </span>
+      </div>
+    )}
+    
     <div class="mb-4 sm:mb-6">
       <div class="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-primary/20 border border-primary/30 rounded-full text-secondary text-xs sm:text-sm">
         {hero.badge_text || "缅甸翡翠定制专家"}

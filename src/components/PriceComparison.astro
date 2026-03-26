@@ -1,0 +1,128 @@
+---
+interface Reason {
+  text: string;
+}
+
+interface Props {
+  priceComparison?: {
+    title?: string;
+    traditional_title?: string;
+    traditional_price?: string;
+    traditional_reasons?: Reason[];
+    muqi_title?: string;
+    muqi_price?: string;
+    muqi_reasons?: Reason[];
+    conclusion?: string;
+    enabled?: boolean;
+  };
+  contacts?: any[];
+  urgencyMessage?: string;
+}
+
+const { priceComparison = {}, contacts = [], urgencyMessage = "" } = Astro.props;
+
+const defaultTraditionalReasons: Reason[] = [
+  { text: '多層中間商加價' },
+  { text: '店鋪租金成本' },
+  { text: '品牌溢價' },
+];
+
+const defaultMuqiReasons: Reason[] = [
+  { text: '緬甸一手貨源' },
+  { text: '線上直銷模式' },
+  { text: '省去60%中間環節' },
+];
+
+const title = priceComparison.title || "同樣品質，為何價格相差如此之大？";
+const traditionalTitle = priceComparison.traditional_title || "傳統商場";
+const traditionalPrice = priceComparison.traditional_price || "¥30,000";
+const traditionalReasons = priceComparison.traditional_reasons?.length ? priceComparison.traditional_reasons : defaultTraditionalReasons;
+const muqiTitle = priceComparison.muqi_title || "沐祁定制";
+const muqiPrice = priceComparison.muqi_price || "¥12,000-15,000";
+const muqiReasons = priceComparison.muqi_reasons?.length ? priceComparison.muqi_reasons : defaultMuqiReasons;
+const conclusion = priceComparison.conclusion || "我們不打價格戰，但同等品質下，價格更合理";
+const enabled = priceComparison.enabled !== false;
+
+if (!enabled) {
+  return;
+}
+---
+
+<section id="price-comparison" class="py-16 bg-stone-50 fade-in-section">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      {urgencyMessage && (
+        <div class="mb-4">
+          <span class="inline-block px-4 py-1 bg-red-500/20 border border-red-500/30 rounded-full text-red-400 text-sm animate-pulse">
+            {urgencyMessage}
+          </span>
+        </div>
+      )}
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">{title}</h2>
+      <div class="w-24 h-1 bg-primary mx-auto"></div>
+    </div>
+    
+    <div class="grid md:grid-cols-2 gap-8 mb-8">
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200 fade-in-section fade-in-delay-1">
+        <div class="bg-gray-700 text-white p-6 text-center">
+          <h3 class="text-xl font-bold">{traditionalTitle}</h3>
+          <p class="text-3xl font-bold mt-2">{traditionalPrice}</p>
+        </div>
+        <div class="p-6">
+          <ul class="space-y-3">
+            {traditionalReasons.map((reason, index) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                <span class="text-gray-600">{reason.text}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden border-2 border-primary relative fade-in-section fade-in-delay-2">
+        <div class="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+          精打細算
+        </div>
+        <div class="bg-primary text-white p-6 text-center">
+          <h3 class="text-xl font-bold">{muqiTitle}</h3>
+          <p class="text-3xl font-bold mt-2">{muqiPrice}</p>
+        </div>
+        <div class="p-6">
+          <ul class="space-y-3">
+            {muqiReasons.map((reason, index) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-gray-700 font-medium">{reason.text}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-center mb-10 fade-in-section">
+      <p class="text-lg text-gray-700 bg-green-50 inline-block px-6 py-3 rounded-full border border-green-200">
+        <span class="text-green-600 font-semibold">省去中間商</span>
+        <span class="text-gray-500 mx-2">|</span>
+        <span class="text-gray-600">同等品質，價格更合理</span>
+      </p>
+    </div>
+    
+    <div class="bg-gradient-to-r from-primary/10 to-primary/5 rounded-2xl p-8 text-center border border-primary/20 fade-in-section">
+      <p class="text-gray-700 text-lg mb-6">{conclusion}</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="#contact" class="inline-flex items-center justify-center px-8 py-4 bg-primary text-white font-semibold rounded-lg btn-hover shadow-lg cursor-pointer transition-all duration-300 hover:scale-105">
+          獲取定制方案
+        </a>
+        <a href="#free-gifts" class="inline-flex items-center justify-center px-8 py-4 border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold rounded-lg transition-all duration-300">
+          領取首次優惠
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

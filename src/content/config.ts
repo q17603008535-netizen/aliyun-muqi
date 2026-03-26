@@ -146,6 +146,14 @@ const testimonials = defineCollection({
     location: z.string(),
     content: z.string(),
     rating: z.number().min(1).max(5).default(5),
+    timestamp: z.string().optional(),
+    customize_type: z.enum(['手鐲定制', '吊墜定制', '戒指定制', '耳環定制', '其他定制']).optional(),
+    conversation: z.array(z.object({
+      speaker: z.enum(['客戶', '洛天']).default('客戶'),
+      text: z.string(),
+    })).optional(),
+    before_image: z.string().optional(),
+    after_image: z.string().optional(),
   }),
 });
 
@@ -154,6 +162,89 @@ const testimonials_config = defineCollection({
   schema: z.object({
     title: z.string().optional(),
     subtitle: z.string().optional(),
+  }),
+});
+
+const free_gifts = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string().default('今日加微信，免費獲取'),
+    subtitle: z.string().default('限量供應，錯過不再'),
+    gifts: z.array(z.object({
+      icon: z.enum(['鉴定', '设计', '手册', '优惠券', '原石', '证书']).default('鉴定'),
+      title: z.string(),
+      description: z.string(),
+    })).default([
+      { icon: '鉴定', title: '免費翡翠真假鑒定', description: '拍照發微信，專業幫您判斷真假' },
+      { icon: '设计', title: '免費定制方案設計', description: '10年+經驗設計師為您量身定制' },
+      { icon: '手册', title: '《10年+翡翠知識經驗手冊》', description: '精選翡翠鑒賞乾貨，助您避坑' },
+      { icon: '优惠券', title: '首次定制專享優惠券', description: '限時領取，最高可減1000元' },
+    ]),
+    cta_text: z.string().default('立即領取'),
+    enabled: z.boolean().default(true),
+  }),
+});
+
+const pain_points = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string().default('您是否有以下困擾？'),
+    pain_items: z.array(z.object({
+      icon: z.enum(['款式', '定制', '周期', '效果', '价格', '品质', '真假', '选择']).default('款式'),
+      text: z.string(),
+    })).default([
+      { icon: '款式', text: '商場成品款式千篇一律，缺乏個性' },
+      { icon: '定制', text: '想要獨一無二的翡翠，但不知如何定制' },
+      { icon: '周期', text: '擔心定制周期長、溝通成本高' },
+      { icon: '效果', text: '擔心定制效果與想象不符' },
+      { icon: '价格', text: '不確定定制是否真的物有所值' },
+    ]),
+    solution_title: z.string().default('沐祁珠寶為您解決以上所有問題'),
+    solution_description: z.string().default('10年+從業經驗，1000+成功案例'),
+    enabled: z.boolean().default(true),
+  }),
+});
+
+const price_comparison = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string().default('同樣品質，為何價格相差如此之大？'),
+    traditional_title: z.string().default('傳統商場'),
+    traditional_price: z.string().default('¥30,000'),
+    traditional_reasons: z.array(z.object({
+      text: z.string(),
+    })).default([
+      { text: '多層中間商加價' },
+      { text: '店鋪租金成本' },
+      { text: '品牌溢價' },
+    ]),
+    muqi_title: z.string().default('沐祁定制'),
+    muqi_price: z.string().default('¥12,000-15,000'),
+    muqi_reasons: z.array(z.object({
+      text: z.string(),
+    })).default([
+      { text: '緬甸一手貨源' },
+      { text: '線上直銷模式' },
+      { text: '省去60%中間環節' },
+    ]),
+    conclusion: z.string().default('我們不打價格戰，但同等品質下，價格更合理'),
+    enabled: z.boolean().default(true),
+  }),
+});
+
+const urgency_settings = defineCollection({
+  type: 'content',
+  schema: z.object({
+    enabled: z.boolean().default(true),
+    messages: z.array(z.object({
+      text: z.string(),
+      position: z.enum(['hero', 'free_gifts', 'pain_points', 'all']).default('all'),
+    })).default([
+      { text: '本月僅剩3個定制名額', position: 'all' },
+      { text: '限時優惠：首次定制立減1000元', position: 'free_gifts' },
+      { text: '加微信即送《翡翠鑒賞手冊》，今日截止', position: 'hero' },
+    ]),
+    cta_text: z.string().default('立即咨詢'),
   }),
 });
 
@@ -198,4 +289,8 @@ export const collections = {
   testimonials_config,
   tracking_codes,
   knowledge,
+  free_gifts,
+  pain_points,
+  price_comparison,
+  urgency_settings,
 };

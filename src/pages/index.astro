@@ -12,6 +12,9 @@ import Testimonials from '../components/Testimonials.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 import FloatingContact from '../components/FloatingContact.astro';
+import FreeGifts from '../components/FreeGifts.astro';
+import PainPoints from '../components/PainPoints.astro';
+import PriceComparison from '../components/PriceComparison.astro';
 
 import { getCollection } from 'astro:content';
 
@@ -47,16 +50,35 @@ const whyUs = whyUsData[0]?.data || {};
 
 const settingsData = await getCollection('settings');
 const settings = settingsData[0]?.data || {};
+
+const freeGiftsData = await getCollection('free_gifts');
+const freeGifts = freeGiftsData[0]?.data || {};
+
+const painPointsData = await getCollection('pain_points');
+const painPoints = painPointsData[0]?.data || {};
+
+const priceComparisonData = await getCollection('price_comparison');
+const priceComparison = priceComparisonData[0]?.data || {};
+
+const urgencySettingsData = await getCollection('urgency_settings');
+const urgencySettings = urgencySettingsData[0]?.data || { enabled: false, messages: [] };
+
+const urgencyMessage = urgencySettings.enabled && urgencySettings.messages?.length > 0 
+  ? urgencySettings.messages.find((m: any) => m.position === 'hero' || m.position === 'all')?.text || ""
+  : "";
 ---
 
 <Layout title="沐祁珠寶 - 缅甸翡翠定制专家｜15 年匠心传承">
   <Navbar settings={settings} />
   
   <main>
-    <Hero hero={hero} contacts={contacts} />
+    <Hero hero={hero} contacts={contacts} urgencyMessage={urgencyMessage} />
     <Video youtubeUrl={hero.youtube_url} />
+    <FreeGifts freeGifts={freeGifts} contacts={contacts} urgencyMessage={urgencyMessage} />
+    <PainPoints painPoints={painPoints} contacts={contacts} urgencyMessage={urgencyMessage} />
     <About about={about} />
     <Trust trust={trust} />
+    <PriceComparison priceComparison={priceComparison} contacts={contacts} urgencyMessage={urgencyMessage} />
     <Products products={products} productsConfig={productsConfig} contacts={contacts} />
     <!-- <KnowledgeWindow /> 已注释 - Google Ads 审核期间隐藏科普页面 -->
     <WhyUs whyUs={whyUs} />
